@@ -1,87 +1,120 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-	<meta charset="UTF-8">
-	
-	<!-- 스타일 -->
-	<link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="/common/css/style.css">
+  <meta charset="UTF-8">
 
-	<title>박규리 포트폴리오</title>
+  <!-- 스타일 -->
+  <link rel="icon" href="./favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./common/css/style.css">
 
-	<!-- meta태그 설정 -->
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-	<meta name="format-detection" content="telephone=no">
+  <title>박규리 포트폴리오</title>
 
-	<meta property="og:title"           content="박규리 포트폴리오"/>
-	<meta property="og:site_name"       content="박규리 포트폴리오"/>
-	<meta property="og:description"     content="프론트엔드, 퍼블리셔 박규리 포트폴리오"/>
-	<meta property="og:image"           content=""/>
-	<meta property="og:type"            content="website"/>
-	<meta property="og:url"             content=""/>
+  <!-- meta태그 설정 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <meta name="format-detection" content="telephone=no">
 
-	<meta name="twitter:description"    content="프론트엔드, 퍼블리셔 박규리 포트폴리오">
-	<meta name="twitter:title"          content="박규리 포트폴리오">
-	<meta name="twitter:site"           content="">
-	<meta name="twitter:image"          content="">
-	<meta name="twitter:creator"        content="박규리 포트폴리오">
-	<meta name="twitter:card"           content="summary">
+  <meta property="og:title" content="박규리 포트폴리오" />
+  <meta property="og:site_name" content="박규리 포트폴리오" />
+  <meta property="og:description" content="프론트엔드, 퍼블리셔 박규리 포트폴리오" />
+  <meta property="og:image" content="" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
 
-	<meta itemprop="name"               content="박규리 포트폴리오">
-	<meta itemprop="description"        content="프론트엔드, 퍼블리셔 박규리 포트폴리오">
-	<meta itemprop="image"              content="">
+  <meta name="twitter:description" content="프론트엔드, 퍼블리셔 박규리 포트폴리오">
+  <meta name="twitter:title" content="박규리 포트폴리오">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+  <meta name="twitter:creator" content="박규리 포트폴리오">
+  <meta name="twitter:card" content="summary">
 
-	<meta name="description" content="프론트엔드, 퍼블리셔 박규리 포트폴리오">
-	<meta name="keyword" content="박규리 포트폴리오, 퍼블리셔 포트폴리오, 프론트엔드 포트폴리오, 프론트엔드, 퍼블리셔, 포트폴리오, portfolio, publisher, frontend">
-	<meta name="keywords" content="박규리 포트폴리오, 퍼블리셔 포트폴리오, 프론트엔드 포트폴리오, 프론트엔드, 퍼블리셔, 포트폴리오, portfolio, publisher, frontend">
-	<meta name="author" content="박규리">
+  <meta itemprop="name" content="박규리 포트폴리오">
+  <meta itemprop="description" content="프론트엔드, 퍼블리셔 박규리 포트폴리오">
+  <meta itemprop="image" content="">
 
-	<!-- 스크립트 -->
-	<script type="text/javascript" src="/common/js/jquery-3.5.1.js"></script>
+  <meta name="description" content="프론트엔드, 퍼블리셔 박규리 포트폴리오">
+  <meta name="keyword" content="박규리 포트폴리오, 퍼블리셔 포트폴리오, 프론트엔드 포트폴리오, 프론트엔드, 퍼블리셔, 포트폴리오, portfolio, publisher, frontend">
+  <meta name="keywords"
+    content="박규리 포트폴리오, 퍼블리셔 포트폴리오, 프론트엔드 포트폴리오, 프론트엔드, 퍼블리셔, 포트폴리오, portfolio, publisher, frontend">
+  <meta name="author" content="박규리">
+
+  <!-- 스크립트 -->
+  <script type="text/javascript" src="./common/js/jquery-3.5.1.js"></script>
+	<script type="text/javascript" src="./common/js/ScrollMagic.min.js"></script>
+	<script type="text/javascript" src="./common/js/debug.addIndicators.min.js"></script>
+	<script type="text/javascript" src="./common/js/TweenMax.min.js"></script>
+	<script type="text/javascript" src="./common/js/animation.gsap.js"></script>
+	<script type="text/javascript" src="./common/js/ui.js"></script>
 </head>
+
 <body>
-    <!-- 헤더 시작 -->
-    <header id="header" class="header">
-        <div class="inner">
-            <h1 class="logo">
-                <a href="/index.html">
-                    <img src="/images/common/logo.png" alt="로고" />
-                    <span class="blind">홈화면 바로가기</span>
-                </a>
-            </h1>
-            <div class="menu-open">
-                <div class="path path1"></div>
-                <div class="path path2"></div>
-                <div class="path path3"></div>
-                <span class="blind">전체 메뉴 열기</span>
+  <!-- 헤더 시작 -->
+  <header id="header" class="header">
+    <div class="inner">
+      <h1 class="logo">
+        <a href="./index.html">
+          <img src="./images/common/logo.svg" alt="로고" />
+          <span class="blind">홈화면 바로가기</span>
+        </a>
+      </h1>
+      <div class="menu-open">
+        <div class="path path1"></div>
+        <div class="path path2"></div>
+        <div class="path path3"></div>
+        <span class="blind">전체 메뉴 열기</span>
+      </div>
+      <nav class="menu">
+        <ul class="dpth1 clear">
+          <li>
+            <a href="javascript:alert('준비중 입니다.')"></a>
+            <div class="dpth2-wrap">
+              <ul class="dpth2">
+                <li> <a href="javascript:alert('준비중 입니다.')"></a> </li>
+              </ul>
             </div>
-            <nav class="menu">
-                <ul class="dpth1 clear">
-                    <li>
-                        <a href="javascript:alert('준비중 입니다.')"></a>
-                        <div class="dpth2-wrap">
-                            <ul class="dpth2">
-                                <li> <a href="javascript:alert('준비중 입니다.')"></a> </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>	 
-            </nav>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <!-- 헤더 끝 -->
+  <!-- 컨텐츠 시작 -->
+  <main id="container" class="container main">
+    <section class="intro sec parallax">
+      <div class="bg bgcst intro-bg"></div>
+      <div class="intro-cont sec-cont">
+        <div class="intro-img">
+          <img src="./images/contents/intro-emogi.gif" alt="">
         </div>
-    </header>
-    <!-- 헤더 끝 -->
-    <!-- 컨텐츠 시작 -->
-    <main id="container" class="container main">
+        <h2 class="intro-title">
+          <span class="t1">G</span>
+          <span class="t2">Y</span>
+          <span class="t3">U</span>
+          <span class="t4">R</span>
+          <span class="t5">I</span>
+        </h2>
+      </div>
+    </section>
+    <!-- .intro -->
+    <section class="about sec">
+      <div class="about-cont sec-cont">
+        
+      </div>
+    </section>
+    <!-- .about -->
 
 
 
-    </main>
-    <!-- 컨텐츠 끝 -->
-    <footer id="footer" class="footer">
-        <div class="inner">
 
-        </div>
-    </footer>
+  </main>
+  <!-- 컨텐츠 끝 -->
+  <footer id="footer" class="footer">
+    <div class="inner">
+
+    </div>
+  </footer>
 </body>
+
 </html>
