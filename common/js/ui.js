@@ -5,14 +5,23 @@ $(document).ready(function () {
     var delta = { x: 0, y: 0 };
     var easeFactor = 0.15;
     var cursor = document.querySelector('.cursor');
+    var cursorTxt = document.querySelector('.cursor .txt');
     window.addEventListener('mousemove', onMouseMove.bind(this));
 
     function onMouseEnter() {
       cursor.classList.add('expanded');
     }
-
     function onMouseLeave() {
       cursor.classList.remove('expanded');
+    }
+
+    function onMouseEnterPJ() {
+      cursor.classList.add('expanded-pj');
+      cursorTxt.innerHTML = 'VIEW<br>PROJECT';
+    }
+    function onMouseLeavePJ() {
+      cursor.classList.remove('expanded-pj');
+      cursorTxt.innerHTML = 'click';
     }
 
     document.querySelectorAll('a').forEach(function (item) {
@@ -22,6 +31,10 @@ $(document).ready(function () {
     document.querySelectorAll('button').forEach(function (item) {
       item.addEventListener('mouseenter', onMouseEnter.bind(this));
       item.addEventListener('mouseleave', onMouseLeave.bind(this));
+    });
+    document.querySelectorAll('.project-item').forEach(function (item) {
+      item.addEventListener('mouseenter', onMouseEnterPJ.bind(this));
+      item.addEventListener('mouseleave', onMouseLeavePJ.bind(this));
     });
 
     function onMouseMove(e) {
