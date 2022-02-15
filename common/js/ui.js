@@ -40,6 +40,32 @@ $(document).ready(function () {
     window.requestAnimationFrame(onRender.bind(this));
   };
 
+  //
+  // aniTxt 텍스트 애니
+  $(window).scroll(function () {
+    $('.aniTxt').each(function () {
+      var thisTop = $(this).offset().top - 900;
+      if ($(window).scrollTop() > thisTop) {
+        $(this).addClass('active');
+      } else {
+        $(this).removeClass('active');
+      }
+    });
+  });
+  $('.aniTxt').each(function () {
+    var typingIdx = 0;
+    var typingTxt = $(this).text();
+    //typingTxt = typingTxt.replace(/(\s*)/g, "");
+    typingTxt = typingTxt.split('');
+    $(this).text('');
+    for (var i = 0; i < typingTxt.length; i++) {
+      $(this).append('<i>' + typingTxt[typingIdx] + '</i>');
+      typingIdx++;
+    }
+  });
+
+  // ******** INTRO ********
+  // intro-img
   if ($(document).scrollTop() > 0) {
     $('.intro-img').addClass('hide');
   }
@@ -53,6 +79,7 @@ $(document).ready(function () {
 
   var controller = new ScrollMagic.Controller();
 
+  // intro-title
   var tweenIntroT1 = TweenMax.fromTo(
     '.intro-title .t1',
     0.2,
@@ -172,6 +199,7 @@ $(document).ready(function () {
       name: '인트로 bg',
     });
 
+  // ******** ABOUT ********
   // about-title 애니 y이동
   var tweenAboutTitle1 = TweenMax.fromTo(
     '.about-title',
@@ -211,28 +239,6 @@ $(document).ready(function () {
       name: 'about-title 2',
     });
 
-  // about-count 텍스트 애니
-  $(window).scroll(function () {
-    $('.about-count').each(function () {
-      var thisTop = $(this).offset().top - 900;
-      if ($(window).scrollTop() > thisTop) {
-        $(this).addClass('active');
-      } else {
-        $(this).removeClass('active');
-      }
-    });
-  });
-  $('.about-count strong').each(function () {
-    var typingIdx = 0;
-    var typingTxt = $(this).text();
-    //typingTxt = typingTxt.replace(/(\s*)/g, "");
-    typingTxt = typingTxt.split('');
-    $(this).text('');
-    for (var i = 0; i < typingTxt.length; i++) {
-      $(this).append('<i>' + typingTxt[typingIdx] + '</i>');
-      typingIdx++;
-    }
-  });
   // 카운트 애니
   var countOn = 'n';
   var counterTop = $('.about-count').offset().top - 900;
@@ -269,4 +275,89 @@ $(document).ready(function () {
       $('.count3').css({ opacity: '0' });
     }
   });
+
+  // ******** PROJECT ********
+
+  var projectTop = $('.project').offset().top - windowHalf;
+  $(window).scroll(function () {
+    $(document).scrollTop() > projectTop
+      ? $('.project-cont').addClass('active')
+      : $('.project-cont').removeClass('active');
+    $(document).scrollTop() > $('.project').offset().top
+      ? $('.project-cont').addClass('actTit')
+      : $('.project-cont').removeClass('actTit');
+    $(document).scrollTop() > $('.project').offset().top + $(window).height()
+      ? $('.project-cont').addClass('hide')
+      : $('.project-cont').removeClass('hide');
+  });
+  // project-cont
+  var tweenProjectCont = TweenMax.fromTo(
+    '.project-cont',
+    0.2,
+    { scale: 10, opacity: 0 },
+    { scale: 1, opacity: 1 }
+  );
+  var sceneProjectCont = new ScrollMagic.Scene({
+    triggerElement: '.project',
+    triggerHook: 0.5,
+    offset: 0,
+    duration: '40%',
+  })
+    .setTween(tweenProjectCont)
+    .addTo(controller)
+    .addIndicators({
+      name: '프로젝트 컨텐츠',
+    });
+
+  // project-cont title
+  var tweenProjectTit1 = TweenMax.fromTo(
+    '.project-cont .title:nth-child(2n)',
+    0.2,
+    { x: 0 },
+    { x: '-130vw' }
+  );
+  var tweenProjectTit2 = TweenMax.fromTo(
+    '.project-cont .title:nth-child(odd)',
+    0.2,
+    { x: 0 },
+    { x: '130vw' }
+  );
+  var sceneProjectTit1 = new ScrollMagic.Scene({
+    triggerElement: '.project',
+    triggerHook: 0.5,
+    offset: windowHalf,
+    duration: '100%',
+  })
+    .setTween(tweenProjectTit1)
+    .addTo(controller)
+    .addIndicators({
+      name: '프로젝트 타이틀',
+    });
+  var sceneProjectTit2 = new ScrollMagic.Scene({
+    triggerElement: '.project',
+    triggerHook: 0.5,
+    offset: windowHalf,
+    duration: '100%',
+  })
+    .setTween(tweenProjectTit2)
+    .addTo(controller);
+
+  // 프로젝트 리스트
+  // var tweenProjectList = TweenMax.fromTo(
+  //   '.project-item img',
+  //   0.2,
+  //   { scale: 1 },
+  //   { scale: 1.2 }
+  // );
+  // var sceneProjectList = new ScrollMagic.Scene({
+  //   triggerElement: '.project-list',
+  //   triggerHook: 0.5,
+  //   offset: 0,
+  //   duration: '100%',
+  // })
+  //   .setTween(tweenProjectList)
+  //   .addTo(controller)
+  //   .addIndicators({
+  //     name: '프로젝트 리스트',
+  //   });
 });
