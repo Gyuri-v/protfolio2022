@@ -314,7 +314,7 @@ $(document).ready(function () {
     triggerElement: '.project',
     triggerHook: 0.5,
     offset: 0,
-    duration: '40%',
+    duration: '20%',
   })
     .setTween(tweenProjectCont)
     .addTo(controller)
@@ -373,4 +373,58 @@ $(document).ready(function () {
   //   .addIndicators({
   //     name: '프로젝트 리스트',
   //   });
+
+  // ■■ study ---- study 가면 study-cont-tit 나오기 --- class
+  var sceneStudyCont1 = new ScrollMagic.Scene({
+    triggerElement: '.study',
+    triggerHook: 1,
+    offset: 0,
+    duration: '0%',
+  })
+    .setClassToggle('.study-cont', 'active1')
+    .addTo(controller)
+    .addIndicators({
+      name: 'study-cont-tit 나오기',
+    });
+
+  // ■■ study ---- study-cont-tit 변화 --- class
+  var sceneStudyCont2 = new ScrollMagic.Scene({
+    triggerElement: '.study',
+    triggerHook: 0,
+    offset: 0,
+    duration: '0%',
+  })
+    .setClassToggle('.study-cont-tit', 'active2')
+    .addTo(controller)
+    .addIndicators({
+      name: 'study-cont-tit bg 변화',
+    });
+
+  // ■■ study ---- study-cont-tit 줄어들기
+  var tweenStudyBgOffset = $(window).height() * 0.8;
+  var tweenStudyBg = TweenMax.to('.study-cont-tit', 0.2, { height: 0 });
+  var sceneStudyBg = new ScrollMagic.Scene({
+    triggerElement: '.study',
+    triggerHook: 0.5,
+    offset: tweenStudyBgOffset,
+    duration: '40%',
+  })
+    .setTween(tweenStudyBg)
+    .addTo(controller)
+    .addIndicators({
+      name: 'study-cont-tit bg 줄어들기',
+    });
+
+  // ■■ study ---- study-cont-tit 사라지기
+  var tweenStudyHideOffset = $(window).height() * 1.2;
+  $(window).scroll(function () {
+    if (
+      $(document).scrollTop() >
+      $('.study').offset().top + tweenStudyHideOffset
+    ) {
+      $('.study-cont-tit').addClass('hide');
+    } else {
+      $('.study-cont-tit').removeClass('hide');
+    }
+  });
 });
