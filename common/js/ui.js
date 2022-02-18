@@ -78,7 +78,7 @@ $(document).ready(function () {
   });
 
   // ******** INTRO ********
-  // intro-img
+  // ■■ intro ---- intro-img
   if ($(document).scrollTop() > 0) {
     $('.intro-img').addClass('hide');
   }
@@ -170,7 +170,7 @@ $(document).ready(function () {
       name: '인트로 텍스트 마지막',
     });
 
-  // intro-img hide, bg show
+  // ■■ intro ---- intro-img hide, bg show
   $(window).scroll(function () {
     if ($(document).scrollTop() > $('.intro').offset().top) {
       $('.intro-img').addClass('hide');
@@ -181,8 +181,13 @@ $(document).ready(function () {
     }
   });
 
-  // intro-title 커지면서 사라지는 애니메이션
-  var introEnd = $('.about').offset().top - $(window).height() * 1.5;
+  // ■■ intro ---- intro-title 커지면서 사라지는 애니메이션
+  var introEnd = $('.about').offset().top - $(window).height() * 1.2;
+  if ($(document).scrollTop() > introEnd) {
+    $('.intro-cont').addClass('none');
+  } else {
+    $('.intro-cont').removeClass('none');
+  }
   $(window).scroll(function () {
     if ($(document).scrollTop() > introEnd) {
       $('.intro-title').addClass('hide');
@@ -190,10 +195,11 @@ $(document).ready(function () {
     } else {
       $('.intro-title').removeClass('hide');
       $('.intro-cont').removeClass('hide');
+      $('.intro-cont').removeClass('none');
     }
   });
 
-  // intro-bg 스크롤 스케일 애니
+  // ■■ intro ---- intro-bg 스크롤 스케일 애니
   var tweenIntroBg = TweenMax.fromTo(
     '.intro-bg',
     0.2,
@@ -213,7 +219,7 @@ $(document).ready(function () {
     });
 
   // ******** ABOUT ********
-  // about-title 애니 y이동
+  // ■■ about ---- about-title 애니 y이동
   var tweenAboutTitle1 = TweenMax.fromTo(
     '.about-title',
     0.2,
@@ -232,7 +238,7 @@ $(document).ready(function () {
       name: 'about-title 1',
     });
 
-  // about-title x이동
+  // ■■ about ---- about-title x이동
   var windowHalf = $(window).height() * 0.7;
   var tweenAboutTitle2 = TweenMax.fromTo(
     '.about-title',
@@ -252,7 +258,7 @@ $(document).ready(function () {
       name: 'about-title 2',
     });
 
-  // 카운트 애니
+  // ■■ about ---- 카운트 애니
   var countOn = 'n';
   var counterTop = $('.about-count').offset().top - 900;
 
@@ -290,7 +296,6 @@ $(document).ready(function () {
   });
 
   // ******** PROJECT ********
-
   var projectTop = $('.project').offset().top - windowHalf;
   $(window).scroll(function () {
     $(document).scrollTop() > projectTop
@@ -303,7 +308,7 @@ $(document).ready(function () {
       ? $('.project-cont').addClass('hide')
       : $('.project-cont').removeClass('hide');
   });
-  // project-cont
+  // ■■ project ---- project-cont
   var tweenProjectCont = TweenMax.fromTo(
     '.project-cont',
     0.2,
@@ -322,7 +327,7 @@ $(document).ready(function () {
       name: '프로젝트 컨텐츠',
     });
 
-  // project-cont title
+  // ■■ project ---- project-cont title
   var tweenProjectTit1 = TweenMax.fromTo(
     '.project-cont .title:nth-child(2n)',
     0.2,
@@ -374,6 +379,7 @@ $(document).ready(function () {
   //     name: '프로젝트 리스트',
   //   });
 
+  // ******** STUDY ********
   // ■■ study ---- study 가면 study-cont-tit 나오기 --- class
   var sceneStudyCont1 = new ScrollMagic.Scene({
     triggerElement: '.study',
@@ -428,23 +434,141 @@ $(document).ready(function () {
     }
   });
 
-  // ■■ study ---- study-list 좌우 이동
-  var tweenStudyListOffset = $(window).height() * 1.4;
-  var tweenStudyList = TweenMax.fromTo(
+  // ■■ study ---- study-track 좌우 이동
+  var tweenStudyTrackOffset = $(window).height() * 1.4;
+  var tweenStudyTrack = TweenMax.fromTo(
     '.study-cont-track',
     0.2,
     { x: 0 },
-    { x: '-120vw' }
+    { x: '-150vw' }
   );
-  var sceneStudyList = new ScrollMagic.Scene({
+  var sceneStudyTrack = new ScrollMagic.Scene({
     triggerElement: '.study',
     triggerHook: 0.5,
-    offset: tweenStudyListOffset,
+    offset: tweenStudyTrackOffset,
     duration: '100%',
   })
-    .setTween(tweenStudyList)
+    .setTween(tweenStudyTrack)
     .addTo(controller)
     .addIndicators({
       name: 'study-cont-track',
     });
+
+  // ■■ study ---- study-list 사라짐
+  var tweenStudyList = TweenMax.fromTo(
+    '.study-cont-list',
+    0.2,
+    { y: 0 },
+    { y: '-100vh' }
+  );
+  var sceneStudyList = new ScrollMagic.Scene({
+    triggerElement: '.contact',
+    triggerHook: 0.5,
+    offset: 0,
+    duration: '100%',
+  })
+    .setClassToggle('.study-cont-list', 'active2')
+    .setTween(tweenStudyList)
+    .addTo(controller)
+    .addIndicators({
+      name: 'study-list 사라짐',
+    });
+
+  // ******** CONTACT ********
+  // ■■ contact ---- 스크롤시 end컨
+  $(window).scroll(function () {
+    // ■■ contact ---- active
+    if ($(document).scrollTop() > $('.contact').offset().top - 600) {
+      $('.contact-cont').addClass('active');
+    } else {
+      $('.contact-cont').removeClass('active');
+    }
+
+    // ■■ contact ----
+    var tweenContactSize = TweenMax.fromTo(
+      '.contact-tit .item1 svg',
+      0.2,
+      { 'margin-top': 500, scale: 2, rotate: 20 },
+      { 'margin-top': 0, scale: 1, rotate: 20 }
+    );
+    var tweenContactPath = TweenMax.fromTo(
+      '.contact-tit .item1 svg text',
+      0.2,
+      { stroke: '#f69000', fill: 'transparent' },
+      { stroke: 'transparent', fill: '#f69000' }
+    );
+    var sceneContactSize = new ScrollMagic.Scene({
+      triggerElement: '.contact',
+      triggerHook: 0.5,
+      offset: 300,
+      duration: '50%',
+    })
+      .setTween(tweenContactSize)
+      .addTo(controller);
+    var sceneContactPath = new ScrollMagic.Scene({
+      triggerElement: '.contact',
+      triggerHook: 0.5,
+      offset: 400,
+      duration: '50%',
+    })
+      .setTween(tweenContactPath)
+      .addTo(controller)
+      .addIndicators({
+        name: 'contact 텍스트 사이즈',
+      });
+
+    // ■■ contact ---- 텍스트 회전
+    var tweenContactRotate1 = TweenMax.fromTo(
+      '.contact .item1',
+      0.2,
+      { rotation: 0 },
+      { rotation: -180 }
+    );
+    var tweenContactRotate2 = TweenMax.fromTo(
+      '.contact .item2',
+      0.2,
+      { rotation: 180 },
+      { rotation: 0 }
+    );
+    var sceneContactRotate1 = new ScrollMagic.Scene({
+      triggerElement: '.contact',
+      triggerHook: 0,
+      offset: 500,
+      duration: '100%',
+    })
+      .setTween(tweenContactRotate1)
+      .addTo(controller);
+    var sceneContactRotate2 = new ScrollMagic.Scene({
+      triggerElement: '.contact',
+      triggerHook: 0,
+      offset: 500,
+      duration: '100%',
+    })
+      .setClassToggle('.contact .item1', 'active')
+      .setTween(tweenContactRotate2)
+      .addTo(controller)
+      .addIndicators({
+        name: 'contact 텍스트 회전',
+      });
+
+    // ■■ contact ---- item2 휘어짐
+    if (
+      $(document).scrollTop() >
+      $('.contact').offset().top + $(window).height() * 1.5
+    ) {
+      $('.contact-tit .item2').addClass('active');
+    } else {
+      $('.contact-tit .item2').removeClass('active');
+    }
+
+    // ■■ contact ---- item2 text
+    if (
+      $(document).scrollTop() >
+      $('.footer').offset().top - $(window).height()
+    ) {
+      $('.contact-tit .item2 .text').addClass('active');
+    } else {
+      $('.contact-tit .item2 .text').removeClass('active');
+    }
+  });
 });

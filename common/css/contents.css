@@ -1,6 +1,6 @@
 /* ■■■■■■■■ COMMON ■■■■■■■■ */
 .sec{ position: relative; width: 100%; overflow: hidden; background: #fff; }
-.sec-cont{ position: fixed; top: 0; left: 0; z-index: 2; width: 100%; height: 100vh; background: #fff; transition: 0.5s cubic-bezier(0, 0, 0.54, 1.16); }
+.sec-cont{ position: fixed; top: 0; left: 0; z-index: 2; width: 100%; height: 100vh; background: #fff; transition: 0.5s ease-in-out; }
 .inner{ width: 1300px; max-width: 94%; min-width: 1060px; margin: 0 auto; padding: 0 20px; }
 
 /* aniTxt */
@@ -39,11 +39,12 @@
 .intro-bg.active{ opacity: 1; }
 .intro-cont{ z-index: 10; display: flex; justify-content: center; align-items: center; background: transparent; }
 .intro-cont.hide{ visibility: hidden; opacity: 0; z-index: -1; transition: all 0s 2s; } 
+.intro-cont.none{ visibility: hidden; opacity: 0; z-index: -1; transition: all 0s 0s; } 
 /* .intro-cont::after{ content: ''; position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; background: #fff; } */
 .intro-img{ opacity: 1; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: opacity 1s; }
 .intro-img.hide{ opacity: 0; }
-.intro-title{ display: flex; font-size: 10vw; font-weight: 700; color: #fff; } 
-.intro-title span{ display: inline-block; }
+.intro-title{ display: flex; transform: scale(1); opacity: 1; font-size: 10vw; font-weight: 700; transition: all 0.7s; } 
+.intro-title span{ display: inline-block; -webkit-text-stroke: 1px transparent; color: #fff; }
 .intro-title.hide{ transform: scale(10); opacity: 0; transition: all 2s; }
 .intro-title.hide span{ -webkit-text-stroke: 1px #f69000; color: transparent; transition: all 0.5s; }
 
@@ -90,14 +91,14 @@
 
 
 /* study */
-.study{ overflow: visible; height: 400vh; margin-top: 50vh; border: 1px solid palevioletred }
+.study{ overflow: visible; height: 340vh; margin-top: 50vh; }
 .study-cont{ visibility: hidden; opacity: 0; }
 .study-cont.active1{ visibility: visible; opacity: 1; }
-.study-cont-tit{ display: flex; align-items: center; transition: all 1s, z-index 0s; }
+.study-cont-tit{ display: flex; align-items: center; z-index: 3; transition: all 1s, z-index 0s; }
 .study-cont-tit .txt-box{ margin-left: 5vw; }
 .study-cont-tit .txt-box .title-wrap{ position: relative; }
 .study-cont-tit .txt-box .title{ transform: translateY(50px); position: relative; z-index: 5; margin-left: 25vw; margin-bottom: 50px; opacity: 0; font-size: 80px; font-weight: 700; color: #f69000; line-height: 1.3; letter-spacing: 2px; transition: all 1s 0s; }
-.study-cont-tit .txt-box .title2{ position: absolute; top: 20px; left: 20px; z-index: 4; color: transparent; -webkit-text-stroke: 2px #f69000; }
+.study-cont-tit .txt-box .title2{ position: absolute; top: 20px; left: 20px; z-index: 4; color: transparent; -webkit-text-stroke: 1px #f69000; }
 .study-cont-tit .txt-box .text{ transform: translateY(30px); opacity: 0; font-size: 17px; font-weight: 400; color: #666; line-height: 1.7; transition: all 1s 0.2s; }
 .study-cont-tit .bg-box{ overflow: hidden; position: absolute; top: 0; right: -10%; z-index: 3; width: 0; height: 100%; transform: scale(1.5); transition: all 1s; }
 .study-cont-tit .bg-box .bg{ left: auto; right: 0; height: 100vh; background-position: bottom 10% center; transition: all 1s; }
@@ -107,8 +108,9 @@
 .study-cont-tit.active2 .bg-box{ width: 100%; }
 .study-cont-tit.active2 .txt-box{ opacity: 0; } 
 .study-cont-tit.hide{ z-index: -1; opacity: 0; }
-.study-cont-list{ display: flex; align-items: center; z-index: 1; padding: 5vh 5vw 0; background: #ece7df; }
+.study-cont-list{ display: flex; align-items: center; z-index: 2; padding: 5vh 5vw 0; background: #ece7df; }
 .study-cont-list.active1{ transition-delay: 1s; }
+.study-cont-list.active2{ transition: all 0.05s 0s linear; }
 .study-cont-list-tit{ position: absolute; top: 8vh; left: -1vw; font-family: 'Lato'; font-size: 10vw; font-weight: 700; color: transparent; line-height: 1.3; letter-spacing: 2px; -webkit-text-stroke: 1px #f69000; }
 .study-cont-track{ display: flex; transition: all 0.3s; }
 .study-cont-item{ width: 30vw; margin-right: 5vw; }
@@ -130,5 +132,29 @@
 .study-cont-item .btn::after{ content: ''; position: absolute; top: 48%; left: calc(100% - 30px); width: 0; height: 1px; background: #f69000; transition: all 0.5s; } 
 .study-cont-item .btn:hover{ color: #f69000; }
 .study-cont-item .btn:hover::after{ width: 30px; }
+
+
+/* contact */
+.contact{ height: 280vh; }
+.contact-cont{ z-index: -1; visibility: hidden; }
+.contact-cont.active{ z-index: 1; visibility: visible; }
+.contact-tit{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: all 0.5s; }
+.contact-tit .item{ position: absolute; top: 40%; left: 50%; transform: translateX(-50%); width: 1080px; height: 1080px; }
+.contact-tit .item1 svg{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(135deg); width: 142%; }
+.contact-tit .item1 svg text{ font-family: 'Lato'; font-size: 36px; font-weight: 700; fill: #f69000; stroke: #f69000; stroke-width: 0.3px; letter-spacing: 0; line-height: 1; transition: all 0s, fill 0.3s, stroke 0.3s; }
+.contact-tit .item2 svg{ overflow: visible; transform: scale(0.45); }
+.contact-tit .item2 svg path{ fill: #f69000; } 
+.contact-tit .item2 .path1{ transform: matrix(0.87815, -0.42791, 0.42791, 0.87815, -7.943, 76.9769); } 
+.contact-tit .item2 .path2{ transform: matrix(0.93452, -0.22453, 0.22453, 0.93452, -2.99582, 51.6405); } 
+.contact-tit .item2 .path3{ transform: matrix(0.99756, -0.15976, 0.15976, 0.99756, -9.16663, 39.5387); } 
+.contact-tit .item2 .path4{ transform: rotate(0deg)  } 
+.contact-tit .item2 .path5{ transform: matrix(0.97255, 0.16187, -0.16187, 0.97255, 15.20745, -44.1662) } 
+.contact-tit .item2 .path6{ transform: matrix(0.92437, 0.32495, -0.32495, 0.92437, 40.7703, -100.5323) } 
+.contact-tit .item2 .path7{ transform: matrix(0.90437, 0.40495, -0.40495, 0.90437, 55.7703, -127.5323); } 
+.contact-tit .item2 .text{ opacity: 0; font-size: 20px; font-weight: 400; color: #000; text-align: center; transition: all 0.5s; }
+.contact-tit .item2.active svg path{ transform: rotate(0) translate(0px, 0px); transition: all 0.5s; fill: #000; }
+.contact-tit .item2.hide{ opacity: 0; }
+.contact-tit .item2 .text.active{ opacity: 1; }
+.contact-tit.hide{ opacity: 0; visibility: hidden; z-index: -1; }
 
 

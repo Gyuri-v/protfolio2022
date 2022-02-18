@@ -363,29 +363,112 @@
               </div>
           </div>
           <!-- .study-cont-item -->
+          <div class="study-cont-item">
+            <div class="img-box">
+              <img src="./images/contents/study-swiper.gif" alt="">
+            </div>
+            <div class="txt-box">
+              <p class="tit">Plugin - Swiper Slide</p>
+              <p class="txt">
+                슬라이드 플러그인으로 주로 사용하는 Swiper slide 를 커스텀하여 
+                각종 슬라이드 예제를 정리해두었습니다.
+              </p>
+              <a href="javascript:alert('준비중 입니다.')" class="btn">VIEW MORE</a>
+            </div>
+          </div>
+          <!-- .study-cont-item -->
+          <div class="study-cont-item">
+            <div class="img-box">
+              <img src="./images/contents/study-kakaomap.gif" alt="">
+            </div>
+            <div class="txt-box">
+              <p class="tit">API - Kakao Map</p>
+              <p class="txt">
+                카카오맵 api 를 활용하여 길찾기 라인을 그리는
+                애니메이션 효과를 적용한 예제 입니다.
+              </p>
+              <a href="javascript:alert('준비중 입니다.')" class="btn">VIEW MORE</a>
+            </div>
+          </div>
+          <!-- .study-cont-item -->
+          <div class="study-cont-item">
+            <div class="img-box">
+              <img src="./images/contents/study-youtube.jpg" alt="">
+            </div>
+            <div class="txt-box">
+              <p class="tit">API - youtube</p>
+              <p class="txt">
+                youtube api 스크립트를 활용하여 유튜브 동영상 제어 방법을 적어 정리했습니다.
+              </p>
+              <a href="javascript:alert('준비중 입니다.')" class="btn">VIEW MORE</a>
+            </div>
+          </div>
+          <!-- .study-cont-item -->
         </div>
       </div>
     </section>
     <!-- .study -->
+    <section class="contact sec">
+      <div class="contact-cont sec-cont">
+        <div class="contact-tit">
+          <div class="item item1">
+            <svg class="svg_txt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 500 500" xml:space="preserve">
+              <defs>
+                <path id="textcircle" d="M250,400 a150,150 0 0,1 0,-300a150,150 0 0,1 0,300Z" transform="rotate(12,250,250)"/>
+              </defs>
+              <text>
+                <textPath xlink:href="#textcircle" >
+                  Thank you.
+                </textPath>
+              </text>
+            </svg>
+          </div>
+          <div class="item item2">
+              <svg id="svg_contact" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 501 72.4">
+                  <g data-name="CONTACT">
+                    <path class="path1"
+                    d="M0,36.2C0,15.1,16.2,0,38,0,50.1,0,60.2,4.4,66.8,12.4L56.4,22a22.52,22.52,0,0,0-17.6-8.2c-13.1,0-22.4,9.2-22.4,22.4s9.3,22.4,22.4,22.4a22.31,22.31,0,0,0,17.6-8.3l10.4,9.6C60.2,68,50.1,72.4,37.9,72.4,16.2,72.4,0,57.3,0,36.2Z" />
+                    <path class="path2"
+                      d="M71.8,36.2C71.8,15.4,88,0,110.1,0s38.3,15.3,38.3,36.2-16.3,36.2-38.3,36.2S71.8,57,71.8,36.2Zm60.2,0c0-13.3-9.4-22.4-21.9-22.4S88.2,22.9,88.2,36.2s9.4,22.4,21.9,22.4S132,49.5,132,36.2Z" />
+                    <path class="path3" d="M224.8,1.2v70H211.5L176.6,28.7V71.2h-16V1.2H174l34.8,42.5V1.2Z" />
+                    <path class="path4" d="M255.9,14.4H233.5V1.2h61V14.4H272.1V71.2H255.9Z" />
+                    <path class="path5" d="M345.8,56.2H313.3l-6.2,15H290.5l31.2-70h16l31.3,70H352Zm-5.1-12.3L329.6,17.1,318.5,43.9Z" />
+                    <path class="path6"
+                      d="M370.9,36.2c0-21.1,16.2-36.2,38-36.2,12.1,0,22.2,4.4,28.8,12.4L427.3,22a22.52,22.52,0,0,0-17.6-8.2c-13.1,0-22.4,9.2-22.4,22.4s9.3,22.4,22.4,22.4a22.31,22.31,0,0,0,17.6-8.3l10.4,9.6C431.1,68,421,72.4,408.8,72.4,387.1,72.4,370.9,57.3,370.9,36.2Z" />
+                    <path class="path7" d="M462.4,14.4H440V1.2h61V14.4H478.6V71.2H462.4Z" />
+                  </g>
+              </svg>
+              <p class="text">언제든지, 편하게 연락주세요!</p>
+          </div>
+      </div>
+      </div>
+    </section>
+    <!-- .contact -->
 
-<script>
-
-$(window).on('load', function(){
-    $('.project-item').each(function(){
-        var colorThief = new ColorThief();
-        var img = $(this).find('img');
-        var color = colorThief.getColor($(img)[0]);
-        $(this).find('.hover-box').css('background-color','rgba('+color+', 0.2'+')');
+    <script>
+    $(window).on('load', function(){
+      $('.project-item').each(function(){
+          var colorThief = new ColorThief();
+          var img = $(this).find('img');
+          var color = colorThief.getColor($(img)[0]);
+          $(this).find('.hover-box').css('background-color','rgba('+color+', 0.2'+')');
+      });
     });
-});
-</script>
-
+    </script>
 
   </main>
   <!-- 컨텐츠 끝 -->
   <footer id="footer" class="footer">
     <div class="inner">
-
+      <p class="foot-copy">© 2022 Gyuri</p>
+      <div class="foot-sns">
+        <ul>
+          <li><a href="javascript:alert('준비중 입니다.')">Resume</a></li>
+          <li><a href="mailto:fnffkdll@naver.com">Email</a></li>
+          <li><a href="https://github.com/Gyuri-v" target="_blank">GitHub</a></li>
+          <li><a href="https://gyuri-v.tistory.com/" target="_blank">Blog</a></li>
+        </ul>
+      </div>
     </div>
   </footer>
 </body>
