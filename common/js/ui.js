@@ -427,4 +427,24 @@ $(document).ready(function () {
       $('.study-cont-tit').removeClass('hide');
     }
   });
+
+  // ■■ study ---- study-list 좌우 이동
+  var tweenStudyListOffset = $(window).height() * 1.4;
+  var tweenStudyList = TweenMax.fromTo(
+    '.study-cont-track',
+    0.2,
+    { x: 0 },
+    { x: '-120vw' }
+  );
+  var sceneStudyList = new ScrollMagic.Scene({
+    triggerElement: '.study',
+    triggerHook: 0.5,
+    offset: tweenStudyListOffset,
+    duration: '100%',
+  })
+    .setTween(tweenStudyList)
+    .addTo(controller)
+    .addIndicators({
+      name: 'study-cont-track',
+    });
 });
