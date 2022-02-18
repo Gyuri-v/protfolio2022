@@ -130,10 +130,10 @@ $(document).ready(function () {
     duration: '50%',
   })
     .setTween(tweenIntroT1)
-    .addTo(controller)
-    .addIndicators({
-      name: '인트로 텍스트',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: '인트로 텍스트',
+  // });
   var sceneIntroT2 = new ScrollMagic.Scene({
     triggerElement: '.intro',
     triggerHook: 0,
@@ -165,10 +165,10 @@ $(document).ready(function () {
     duration: '50%',
   })
     .setTween(tweenIntroT5)
-    .addTo(controller)
-    .addIndicators({
-      name: '인트로 텍스트 마지막',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: '인트로 텍스트 마지막',
+  // });
 
   // ■■ intro ---- intro-img hide, bg show
   $(window).scroll(function () {
@@ -213,10 +213,10 @@ $(document).ready(function () {
     duration: '250%',
   })
     .setTween(tweenIntroBg)
-    .addTo(controller)
-    .addIndicators({
-      name: '인트로 bg',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: '인트로 bg',
+  // });
 
   // ******** ABOUT ********
   // ■■ about ---- about-title 애니 y이동
@@ -233,10 +233,10 @@ $(document).ready(function () {
     duration: '100%',
   })
     .setTween(tweenAboutTitle1)
-    .addTo(controller)
-    .addIndicators({
-      name: 'about-title 1',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'about-title 1',
+  // });
 
   // ■■ about ---- about-title x이동
   var windowHalf = $(window).height() * 0.7;
@@ -253,10 +253,10 @@ $(document).ready(function () {
     duration: '300%',
   })
     .setTween(tweenAboutTitle2)
-    .addTo(controller)
-    .addIndicators({
-      name: 'about-title 2',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'about-title 2',
+  // });
 
   // ■■ about ---- 카운트 애니
   var countOn = 'n';
@@ -322,10 +322,10 @@ $(document).ready(function () {
     duration: '20%',
   })
     .setTween(tweenProjectCont)
-    .addTo(controller)
-    .addIndicators({
-      name: '프로젝트 컨텐츠',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: '프로젝트 컨텐츠',
+  // });
 
   // ■■ project ---- project-cont title
   var tweenProjectTit1 = TweenMax.fromTo(
@@ -347,10 +347,10 @@ $(document).ready(function () {
     duration: '100%',
   })
     .setTween(tweenProjectTit1)
-    .addTo(controller)
-    .addIndicators({
-      name: '프로젝트 타이틀',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: '프로젝트 타이틀',
+  // });
   var sceneProjectTit2 = new ScrollMagic.Scene({
     triggerElement: '.project',
     triggerHook: 0.5,
@@ -388,10 +388,10 @@ $(document).ready(function () {
     duration: '0%',
   })
     .setClassToggle('.study-cont', 'active1')
-    .addTo(controller)
-    .addIndicators({
-      name: 'study-cont-tit 나오기',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'study-cont-tit 나오기',
+  // });
 
   // ■■ study ---- study-cont-tit 변화 --- class
   var sceneStudyCont2 = new ScrollMagic.Scene({
@@ -401,10 +401,10 @@ $(document).ready(function () {
     duration: '0%',
   })
     .setClassToggle('.study-cont-tit', 'active2')
-    .addTo(controller)
-    .addIndicators({
-      name: 'study-cont-tit bg 변화',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'study-cont-tit bg 변화',
+  // });
 
   // ■■ study ---- study-cont-tit 줄어들기
   var tweenStudyBgOffset = $(window).height() * 0.8;
@@ -416,10 +416,10 @@ $(document).ready(function () {
     duration: '40%',
   })
     .setTween(tweenStudyBg)
-    .addTo(controller)
-    .addIndicators({
-      name: 'study-cont-tit bg 줄어들기',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'study-cont-tit bg 줄어들기',
+  // });
 
   // ■■ study ---- study-cont-tit 사라지기
   var tweenStudyHideOffset = $(window).height() * 1.2;
@@ -449,10 +449,10 @@ $(document).ready(function () {
     duration: '100%',
   })
     .setTween(tweenStudyTrack)
-    .addTo(controller)
-    .addIndicators({
-      name: 'study-cont-track',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'study-cont-track',
+  // });
 
   // ■■ study ---- study-list 사라짐
   var tweenStudyList = TweenMax.fromTo(
@@ -469,10 +469,10 @@ $(document).ready(function () {
   })
     .setClassToggle('.study-cont-list', 'active2')
     .setTween(tweenStudyList)
-    .addTo(controller)
-    .addIndicators({
-      name: 'study-list 사라짐',
-    });
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'study-list 사라짐',
+  // });
 
   // ******** CONTACT ********
   // ■■ contact ---- 스크롤시 end컨
@@ -512,10 +512,10 @@ $(document).ready(function () {
       duration: '50%',
     })
       .setTween(tweenContactPath)
-      .addTo(controller)
-      .addIndicators({
-        name: 'contact 텍스트 사이즈',
-      });
+      .addTo(controller);
+    // .addIndicators({
+    //   name: 'contact 텍스트 사이즈',
+    // });
 
     // ■■ contact ---- 텍스트 회전
     var tweenContactRotate1 = TweenMax.fromTo(
@@ -546,10 +546,10 @@ $(document).ready(function () {
     })
       .setClassToggle('.contact .item1', 'active')
       .setTween(tweenContactRotate2)
-      .addTo(controller)
-      .addIndicators({
-        name: 'contact 텍스트 회전',
-      });
+      .addTo(controller);
+    // .addIndicators({
+    //   name: 'contact 텍스트 회전',
+    // });
 
     // ■■ contact ---- item2 휘어짐
     if (
