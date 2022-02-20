@@ -368,8 +368,8 @@ $(document).ready(function () {
     var tweenProjectList = TweenMax.fromTo(
       pjImg,
       0.2,
-      { y: '10%' },
-      { y: '-10%' }
+      { y: '5%', scale: 1.05 },
+      { y: '-5%', scale: 1 }
     );
     var sceneProjectList = new ScrollMagic.Scene({
       triggerElement: pjItem[i],
