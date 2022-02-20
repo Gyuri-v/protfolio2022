@@ -361,23 +361,28 @@ $(document).ready(function () {
     .addTo(controller);
 
   // 프로젝트 리스트
-  // var tweenProjectList = TweenMax.fromTo(
-  //   '.project-item img',
-  //   0.2,
-  //   { scale: 1 },
-  //   { scale: 1.2 }
-  // );
-  // var sceneProjectList = new ScrollMagic.Scene({
-  //   triggerElement: '.project-list',
-  //   triggerHook: 0.5,
-  //   offset: 0,
-  //   duration: '100%',
-  // })
-  //   .setTween(tweenProjectList)
-  //   .addTo(controller)
-  //   .addIndicators({
-  //     name: '프로젝트 리스트',
-  //   });
+  var pjItem = $('.project-item');
+  for (var i = 0; i < pjItem.length; i++) {
+    var pjImg = $(pjItem[i]).find('.img');
+    var pjImgMoveY = $(pjItem[i]).find('.img-box').outerWidth() * 0.05;
+    var tweenProjectList = TweenMax.fromTo(
+      pjImg,
+      0.2,
+      { y: '10%' },
+      { y: '-10%' }
+    );
+    var sceneProjectList = new ScrollMagic.Scene({
+      triggerElement: pjItem[i],
+      triggerHook: 0.5,
+      offset: 0,
+      duration: '100%',
+    })
+      .setTween(tweenProjectList)
+      .addTo(controller)
+      .addIndicators({
+        name: '프로젝트 리스트' + i,
+      });
+  }
 
   // ******** STUDY ********
   // ■■ study ---- study 가면 study-cont-tit 나오기 --- class
