@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+<!--
+******************************
+
+카카오맵 지도에 길찾아가는 path animation 템플릿입니다.
+
+******************************
+-->
+<head>
+	<meta charset="UTF-8">
+	<title>카카오맵 길찾기 animation</title>
+</head>
+<body>
+	<div class="container">
+		<div class="contents">
+			<h2 class="title"> 🚩 카카오맵 길찾기 애니메이션</h2>
+			<div class="contBox">
+				<div id="map" style="width:100%;height:400px;"></div>
+				<p class="text">지도 좌표값은 <a href="https://tablog.neocities.org/keywordposition.html" target="_blank">요기</a>에서 찾으시면됩니닷 😉</p>
+				<p class="text">카카오 지도 api 관련해서 더 많은 내용은 <a href="https://apis.map.kakao.com/web/sample/" target="_blank">공식사이트 데모</a> 를 확인해주새요. </p>
+			</div>
+		</div>
+		<div class="contents">
+			<h2 class="title"> 🔑 카카오 API 키 발급받기 </h2>
+			<div class="contBox">
+				<p class="text">공유폴더 경로</p>
+				<p class="text">블로그 링크</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+<!-- ◼️◼️◼️◼️◼️◼️◼️◼️◼️ 스타일 ◼️◼️◼️◼️◼️◼️◼️◼️◼️ -->
+<style>
+@font-face {
+	font-family: 'GmarketSansBold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+html, body{ margin: 0; padding: 0;}
+.container{ display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; padding: 50px 0; }
+.contents{ width: 100%; max-width: 1000px; padding: 50px 0; }
+.title{ margin: 0; margin-bottom: 30px; font-family: 'GmarketSansBold'; font-size: 40px; font-weight: 600; color: #333; text-align: center; }
+.subtitle{ margin: 0; margin-bottom: 20px; font-family: 'GmarketSansMedium'; font-size: 28px; font-weight: 600; color: #333; text-align: center; }
+.text{ margin: 0; margin-top: 20px; font-family: 'GmarketSansMedium'; font-size: 17px; font-weight: 400; color: #333; text-align: center; }
+.text a{ color: #2b6fee; }
+.text a:hover{ color: #0049b6; }
+.tal{ text-align: left !important; }
+.contBox{ width: 100%; padding: 50px; box-sizing: border-box; background: #fff; border-radius: 30px; box-shadow: 0 20px 80px rgba(0,0,0,0.15); }
+.contBox .root_daum_roughmap{ width: 100%; height: 100%;  }
+.contBox .root_daum_roughmap .wrap_map{ height: 100%; }
+.contBox #daum-maps-shape-0{ stroke-dasharray: var(--pathLength); stroke-dashoffset: var(--pathLength); animation: strokeAni 3s both linear; }
+@keyframes strokeAni{
+	0%{ stroke-dashoffset: var(--pathLength); }
+	100%{ stroke-dashoffset: 0; }
+}
+</style>
+
+
+<!-- ◼️◼️◼️◼️◼️◼️◼️◼️◼️ 스크립트 ◼️◼️◼️◼️◼️◼️◼️◼️◼️ -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 카카오맵 api 키값입니다 - 등록된 사이트만 나오기때문에 타사이트에는 키값 새로 발급받아 사용하셔야합니다! -->
+<script type='text/javascript' src='https://dapi.kakao.com/v2/maps/sdk.js?appkey=297e821b791e2e81f41380d14646c212'></script>
+<script>
+/* ◼️◼️◼️◼ 지도 세팅 ◼️◼️◼️◼ */
+// 반응형에 따라 지도 크기 조정을 위한 if문  -- 지도 표시할 div / 중심좌표 / 확대레벨 / 확대축소 컨트롤
+if( window.innerWidth > 1024 ){ 
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = { 
+			center: new kakao.maps.LatLng(37.555347620328035, 126.92038265473496), // 지도의 중심좌표
+			// draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막으려면 draggable: false 옵션을 추가하세요
+			level: 2 // 지도의 확대 레벨
+		};
+}else{
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = { 
+			center: new kakao.maps.LatLng(37.555347620328035, 126.92038265473496), // 지도의 중심좌표
+			// draggable: false, // 지도를 생성할때 지도 이동 및 확대/축소를 막으려면 draggable: false 옵션을 추가하세요
+			level: 3 // 지도의 확대 레벨
+		};
+} 
+
+var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+// 버튼 클릭에 따라 지도 확대, 축소 기능을 막거나 풀고 싶은 경우에는 map.setZoomable 함수를 사용합니다
+map.setZoomable(true);
+
+// 지도 확대 축소를 제어할 수 있는  줌 컨트롤을 생성합니다
+var zoomControl = new kakao.maps.ZoomControl();
+map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+
+
+// 마커가 표시될 위치입니다 
+var markerPosition  = new kakao.maps.LatLng(37.555268064836795, 126.91932457127115 ); 
+
+// 마커를 생성합니다
+var marker = new kakao.maps.Marker({
+	position: markerPosition
+});
+
+// 마커가 지도 위에 표시되도록 설정합니다
+marker.setMap(map);
+
+
+/* ◼️◼️◼️◼ 지도 길찾기 라인 ◼️◼️◼️◼ */
+// 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+var linePath = [
+	new kakao.maps.LatLng(37.55625008458588, 126.92258859822104),
+	new kakao.maps.LatLng(37.555255856327214, 126.92125984343201),
+	new kakao.maps.LatLng(37.55552597013212, 126.92098228427209),
+	new kakao.maps.LatLng(37.554662479814525, 126.91981752292268),
+	new kakao.maps.LatLng(37.55516215129859, 126.91925678170976),
+	new kakao.maps.LatLng(37.55523201336524, 126.91930763418507),
+];
+
+// 지도에 표시할 선을 생성합니다
+var polyline = new kakao.maps.Polyline({
+	path: linePath, // 선을 구성하는 좌표배열 입니다
+	strokeWeight: 5, // 선의 두께 입니다
+	strokeColor: '#ee2b2b', // 선의 색깔입니다
+	strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	strokeStyle: 'solid' // 선의 스타일입니다
+});
+
+// 지도에 선을 표시합니다 
+polyline.setMap(map); 
+
+// 지도 선 애니메이션을 위한 docStyle 지정
+var docStyle = document.documentElement.style;
+var pathLength = document.querySelector('#daum-maps-shape-0').getTotalLength();
+docStyle.setProperty('--pathLength', pathLength);
+</script>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<!--
+******************************
+
+유튜브 동영상 제어 - only script 템플릿입니다.
+
+******************************
+-->
+<head>
+	<meta charset="UTF-8">
+	<title>유튜브 동영상 제어 - only script</title>
+</head>
+<body>
+	<div class="container">
+		<div class="contents">
+			<h2 class="title"> 🎬 유튜브 동영상 제어 - only script</h2>
+			<div class="contBox">
+				<p class="subtitle">동영상 3초 뒤에 멈추기</p>
+				<!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+				<div class="videoBox">
+					<div id="player" class="player"></div>
+				</div>
+				<p class="text">더 많은 내용은 <a href="https://developers.google.com/youtube/iframe_api_reference?hl=ko" target="_blank">공식사이트</a> 를 확인해주세요.</p>
+			</div>
+		</div>
+	</div>
+</body>
+
+
+<!-- ◼️◼️◼️◼️◼️◼️◼️◼️◼️ 스타일 ◼️◼️◼️◼️◼️◼️◼️◼️◼️ -->
+<style>
+@font-face {
+	font-family: 'GmarketSansBold';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'GmarketSansMedium';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+html, body{ margin: 0; padding: 0;}
+.container{ display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; padding: 50px 0; }
+.contents{ width: 100%; max-width: 1000px; padding: 50px 0; }
+.title{ margin: 0; margin-bottom: 30px; font-family: 'GmarketSansBold'; font-size: 40px; font-weight: 600; color: #333; text-align: center; }
+.subtitle{ margin: 0; margin-bottom: 20px; font-family: 'GmarketSansMedium'; font-size: 28px; font-weight: 600; color: #333; text-align: center; }
+.text{ margin: 0; margin-top: 20px; font-family: 'GmarketSansMedium'; font-size: 17px; font-weight: 400; color: #333; text-align: center; }
+.text a{ color: #2b6fee; }
+.text a:hover{ color: #0049b6; }
+.col{ color: #2b6fee; }
+.tal{ text-align: left !important; }
+.contBox{ width: 100%; padding: 50px; box-sizing: border-box; background: #fff; border-radius: 30px; box-shadow: 0 20px 80px rgba(0,0,0,0.15); }
+.videoBox{ position: relative; width: 100%; padding-bottom: 56.25%; }
+.player{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+</style>
+
+
+
+<!-- ◼️◼️◼️◼️◼️◼️◼️◼️◼️ 스크립트 ◼️◼️◼️◼️◼️◼️◼️◼️◼️ -->
+<script>
+
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+  function onYouTubeIframeAPIReady() {
+	player = new YT.Player('player', {
+	  height: '390',
+	  width: '640',
+	  videoId: '3wRQW-W9Dio',
+	  playerVars: { 
+		'autoplay': 1,
+		'controls': 0,
+		'rel': 0,
+		'playlist': '3wRQW-W9Dio',
+		//'loop': 1,
+		'mute':1,
+	},
+	  events: {
+		'onReady': onPlayerReady,
+		'onStateChange': onPlayerStateChange
+	  }
+	});
+  }
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+	event.target.mute();
+	event.target.playVideo();
+  }
+
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+  function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.PLAYING && !done) {
+		setTimeout(stopVideo, 3000); //3초 뒤 멈충, loop 1 이면 작동안함
+		done = true;
+	}
+  }
+  function stopVideo() {
+	player.pauseVideo();
+  }
+</script>
+
+</html>
