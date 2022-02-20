@@ -378,10 +378,10 @@ $(document).ready(function () {
       duration: '100%',
     })
       .setTween(tweenProjectList)
-      .addTo(controller)
-      .addIndicators({
-        name: '프로젝트 리스트' + i,
-      });
+      .addTo(controller);
+    // .addIndicators({
+    //   name: '프로젝트 리스트' + i,
+    // });
   }
 
   // ******** STUDY ********

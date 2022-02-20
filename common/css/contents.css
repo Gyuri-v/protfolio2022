@@ -50,12 +50,13 @@
 
 /* about */
 .about{ padding: 20vw 0 10vw; }
+.about .inner{ display: flex; justify-content: space-between; }
 .about-title { position: absolute; top: -3em; z-index: 9; padding-left: 5vw; font-size: 7vw; font-weight: 700; color: #f69000; letter-spacing: -6px; line-height: 1; white-space: nowrap; }
 .about-title h2{ font-size: inherit; font-weight: inherit; color: inherit; letter-spacing: inherit; line-height: inherit; }
 .intro .about-title{ top: auto; bottom: 2em; color: #fff; }
 .about-count{ margin-bottom: 15px; font-size: 54px; font-weight: 600; color: #000; letter-spacing: -2px; }
 .about-text{ margin-top: 40px; font-size: 20px; font-weight: 400; color: #000; line-height: 1.8; }
-.about .img-wrap{ position: relative; z-index: 2; width: 400px; margin-top: 40px; }
+.about .img-wrap{ position: relative; z-index: 2; width: 400px; max-width: 32%; margin-top: 10vh; }
 .about .img-wrap::after{ content: ''; position: absolute; top: 20px; left: 20px; z-index: -1; width: 100%; height: 100%; border: 1px solid #f69000; }
 
 /* project */
