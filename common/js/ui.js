@@ -1,4 +1,12 @@
 $(document).ready(function () {
+  // mouse animation
+  var docStyle = document.documentElement.style;
+
+  document.addEventListener('mousemove', function (e) {
+    docStyle.setProperty('--mouse-x', e.clientX);
+    docStyle.setProperty('--mouse-y', e.clientY);
+  });
+
   // cursor
   window.onload = function () {
     var position = { x: 0, y: 0 };
@@ -364,23 +372,39 @@ $(document).ready(function () {
   var pjItem = $('.project-item');
   for (var i = 0; i < pjItem.length; i++) {
     var pjImg = $(pjItem[i]).find('.img');
-    var pjImgMoveY = $(pjItem[i]).find('.img-box').outerWidth() * 0.05;
-    var tweenProjectList = TweenMax.fromTo(
+    var tweenProjectItem = TweenMax.fromTo(
+      pjItem[i],
+      0.2,
+      { y: '10%' },
+      { y: '-10%' }
+    );
+    var tweenProjectImg = TweenMax.fromTo(
       pjImg,
       0.2,
       { y: '5%', scale: 1.05 },
       { y: '-5%', scale: 1 }
     );
+    var sceneProjectItem = new ScrollMagic.Scene({
+      triggerElement: pjItem[i],
+      triggerHook: 1,
+      offset: 0,
+      duration: '100%',
+    })
+      .setTween(tweenProjectItem)
+      .addTo(controller);
+    // .addIndicators({
+    //   name: '프로젝트 아이템' + i,
+    // });
     var sceneProjectList = new ScrollMagic.Scene({
       triggerElement: pjItem[i],
       triggerHook: 0.5,
       offset: 0,
       duration: '100%',
     })
-      .setTween(tweenProjectList)
+      .setTween(tweenProjectImg)
       .addTo(controller);
     // .addIndicators({
-    //   name: '프로젝트 리스트' + i,
+    //   name: '프로젝트 이미지' + i,
     // });
   }
 
