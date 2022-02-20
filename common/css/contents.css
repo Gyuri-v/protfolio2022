@@ -144,6 +144,7 @@
 .contact-tit .item{ position: absolute; top: 40%; left: 50%; transform: translateX(-50%); width: 1080px; height: 1080px; }
 .contact-tit .item1 svg{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(135deg); width: 142%; }
 .contact-tit .item1 svg text{ font-family: 'Lato'; font-size: 36px; font-weight: 700; fill: #f69000; stroke: #f69000; stroke-width: 0.3px; letter-spacing: 0; line-height: 1; transition: all 0s, fill 0.3s, stroke 0.3s; }
+.contact-tit .item2{ top: 35%; }
 .contact-tit .item2 svg{ overflow: visible; transform: scale(0.45); }
 .contact-tit .item2 svg path{ fill: #f69000; } 
 .contact-tit .item2 .path1{ transform: matrix(0.87815, -0.42791, 0.42791, 0.87815, -7.943, 76.9769); } 
@@ -153,7 +154,8 @@
 .contact-tit .item2 .path5{ transform: matrix(0.97255, 0.16187, -0.16187, 0.97255, 15.20745, -44.1662) } 
 .contact-tit .item2 .path6{ transform: matrix(0.92437, 0.32495, -0.32495, 0.92437, 40.7703, -100.5323) } 
 .contact-tit .item2 .path7{ transform: matrix(0.90437, 0.40495, -0.40495, 0.90437, 55.7703, -127.5323); } 
-.contact-tit .item2 .text{ opacity: 0; font-size: 20px; font-weight: 400; color: #000; text-align: center; transition: all 0.5s; }
+.contact-tit .item2 .text{ opacity: 0; font-size: 18px; font-weight: 400; color: #000; text-align: center; line-height: 1.5; transition: all 0.5s; }
+.contact-tit .item2 .text a{ display: block; margin-top: 10px; font-size: 1.4em; }
 .contact-tit .item2.active svg path{ transform: rotate(0) translate(0px, 0px); transition: all 0.5s; fill: #000; }
 .contact-tit .item2.hide{ opacity: 0; }
 .contact-tit .item2 .text.active{ opacity: 1; }

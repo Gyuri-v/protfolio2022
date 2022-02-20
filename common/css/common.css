@@ -562,13 +562,12 @@ select::-ms-expand{
 .header{ position: fixed; top: 0; left: 0; z-index: 999; width: 100%; height: 100px; }
 .header .inner{ display: flex; justify-content: space-between; align-items: center; width: 100%; height: 100%; }
 .header .logo{ width: 120px; }
-.header .logo path{ fill: #709700; }
 
 /* footer */
-.footer{ position: relative; z-index: 999; padding: 30px; border-top: 1px solid #000; letter-spacing: 0; }
+.footer{ position: relative; z-index: 999; height: 150px; padding: 30px; border-top: 1px solid #000; letter-spacing: 0; }
 .footer .inner{ display: flex; justify-content: space-between; }
 .foot-copy{ font-size: 15px; font-weight: 300; color: #666; }
 .foot-sns ul{ display: flex; }
 .foot-sns ul li a{ display: block; margin-left: 20px; font-size: 16px; font-weight: 500; color: #000; } 
-
+.foot-sns ul li a:hover{ color: #f69000; }
 
