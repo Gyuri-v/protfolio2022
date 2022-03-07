@@ -37,6 +37,9 @@
 .mouseAni2 { transform: translateX(calc(var(--mouse-x) * 0.03px)) translateY(calc(var(--mouse-y) * 0.03px)); }
 .mouseAni3 { transform: translateX(calc(var(--mouse-x) * 0.01px)) translateY(calc(var(--mouse-y) * 0.01px)); }
 
+/* greeting */
+.greeting{ height: 200vh; } 
+.greeting-cont canvas{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
 /* intro */
 .intro{ height: 240vh; } 

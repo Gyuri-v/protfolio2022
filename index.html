@@ -49,7 +49,6 @@
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>
   <script type="text/javascript" src="./common/js/jquery.counterup.js"></script>
 	<script type="text/javascript" src="./common/js/color-thief.min.js"></script>
-	<script type="text/javascript" src="./common/js/ui.js"></script>
 </head>
 
 <body>
@@ -89,13 +88,16 @@
 
   <!-- 컨텐츠 시작 -->
   <main id="container" class="container main">
+
+    <section class="greeting sec">
+      <div class="greeting-cont sec-cont">
+        <canvas id="canvas-greeting" width="1920" height="1080"></canvas>
+      </div>
+    </section>
     
     <section class="intro sec parallax">
       <div class="bg bgcst intro-bg"></div>
       <div class="intro-cont sec-cont">
-        <div class="intro-img">
-          <img src="./images/contents/intro-emogi.gif" alt="">
-        </div>
         <h2 class="intro-title">
           <span class="t1">G</span>
           <span class="t2">Y</span>
@@ -470,18 +472,6 @@
       </div>
     </section>
     <!-- .contact -->
-
-    <script>
-    $(window).on('load', function(){
-      $('.project-item').each(function(){
-          var colorThief = new ColorThief();
-          var img = $(this).find('img');
-          var color = colorThief.getColor($(img)[0]);
-          $(this).find('.hover-box').css('background-color','rgba('+color+', 0.2'+')');
-      });
-    });
-    </script>
-
   </main>
   <!-- 컨텐츠 끝 -->
   <footer id="footer" class="footer">
@@ -497,6 +487,8 @@
       </div>
     </div>
   </footer>
+
+  <script type="text/javascript" src="./common/js/ui.js"></script>
 </body>
 
 </html>

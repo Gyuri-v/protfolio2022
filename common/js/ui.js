@@ -1,4 +1,82 @@
+(() => {
+  /* ■■■■■■■■■■■■■■■■ GREETING ■■■■■■■■■■■■■■■■ */
+  const canvas = document.querySelector('#canvas-greeting');
+  const context = canvas.getContext('2d');
+  const videoImages = [];
+  const greetingHeight = document.querySelector('.greeting').offsetHeight;
+  let totalImagesCount = 158;
+  let progress;
+  let currentFrame;
+
+  function setImages() {
+    for(let i = 0; i < totalImagesCount; i++ ){
+      let imgElem = new Image();
+      imgElem.src = `./video/greeting/greeting-img-${1000 + i}.jpg`;
+      videoImages.push(imgElem);
+    }
+  };
+
+  function calcValue(){
+    let opaVal;
+    
+    const partScrollStart = greetingHeight * 0.95;
+    const partScrollEnd = greetingHeight * 1;
+    const partScrollHeight = partScrollEnd - partScrollStart;
+    
+    if( pageYOffset >= partScrollStart && pageYOffset <= partScrollEnd ){
+      opaVal = (((pageYOffset - partScrollStart) / partScrollHeight ) * -1) + 1;
+    }else if( pageYOffset < partScrollStart ){
+      opaVal = 1;
+    }else if( pageYOffset > partScrollEnd ){
+      opaVal = 0;
+    }
+
+    return opaVal;
+  };
+
+  function aniGreeting(){
+    // greeting imogi
+    progress = pageYOffset / greetingHeight;
+    if (progress < 0) progress = 0;
+    if (progress > 1) progress = 1;
+
+    currentFrame = Math.round((totalImagesCount - 1) * progress);
+    context.drawImage(videoImages[currentFrame], 0, 0);
+
+    // greeting opacity
+    document.querySelector('.greeting-cont').style.opacity = calcValue();
+    console.log(calcValue(progress));
+
+    // 영역 벗어나면 visibility
+    if ( pageYOffset > greetingHeight + 50 ) {
+      document.querySelector('.greeting-cont').style.visibility = 'hidden';
+    }else{
+      document.querySelector('.greeting-cont').style.visibility = 'visible';
+    }
+
+    // 
+    const heightRatio = window.innerHeight / 1080;
+    canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
+  };
+  
+  function init() {
+    context.drawImage(videoImages[0], 0, 0);
+
+    window.addEventListener('scroll', function () {
+      aniGreeting();
+    });
+  }
+
+  window.addEventListener('load', () => {
+    init();
+    aniGreeting();
+  });
+  setImages();
+})();
+
+
 $(document).ready(function () {
+  /* ■■■■■■■■■■■■■■■■ mouse ani ■■■■■■■■■■■■■■■■ */
   // mouse animation
   var docStyle = document.documentElement.style;
 
@@ -7,6 +85,7 @@ $(document).ready(function () {
     docStyle.setProperty('--mouse-y', e.clientY);
   });
 
+  /* ■■■■■■■■■■■■■■■■ cursor ■■■■■■■■■■■■■■■■ */
   // cursor
   window.onload = function () {
     var position = { x: 0, y: 0 };
@@ -61,7 +140,7 @@ $(document).ready(function () {
     window.requestAnimationFrame(onRender.bind(this));
   };
 
-  //
+  /* ■■■■■■■■■■■■■■■■ text ani ■■■■■■■■■■■■■■■■ */
   // aniTxt 텍스트 애니
   $(window).scroll(function () {
     $('.aniTxt').each(function () {
@@ -85,19 +164,7 @@ $(document).ready(function () {
     }
   });
 
-  // ******** INTRO ********
-  // ■■ intro ---- intro-img
-  if ($(document).scrollTop() > 0) {
-    $('.intro-img').addClass('hide');
-  }
-  $(window).scroll(function () {
-    if ($(document).scrollTop() > 0) {
-      $('.intro-img').addClass('hide');
-    } else {
-      $('.intro-img').removeClass('hide');
-    }
-  });
-
+  // ■■■■■■■■■■■■■■■■ INTRO ■■■■■■■■■■■■■■■■
   var controller = new ScrollMagic.Controller();
 
   // intro-title
@@ -226,7 +293,8 @@ $(document).ready(function () {
   //   name: '인트로 bg',
   // });
 
-  // ******** ABOUT ********
+  
+  // ■■■■■■■■■■■■■■■■ ABOUT ■■■■■■■■■■■■■■■■
   // ■■ about ---- about-title 애니 y이동
   var tweenAboutTitle1 = TweenMax.fromTo(
     '.about-title',
@@ -303,7 +371,14 @@ $(document).ready(function () {
     }
   });
 
-  // ******** PROJECT ********
+  // ■■■■■■■■■■■■■■■■ PROJECT ■■■■■■■■■■■■■■■■
+  $('.project-item').each(function(){
+      var colorThief = new ColorThief();
+      var img = $(this).find('img');
+      var color = colorThief.getColor($(img)[0]);
+      $(this).find('.hover-box').css('background-color','rgba('+color+', 0.2'+')');
+  });
+
   var projectTop = $('.project').offset().top - windowHalf;
   $(window).scroll(function () {
     $(document).scrollTop() > projectTop
@@ -408,7 +483,7 @@ $(document).ready(function () {
     // });
   }
 
-  // ******** STUDY ********
+  // ■■■■■■■■■■■■■■■■ STUDY ■■■■■■■■■■■■■■■■
   // ■■ study ---- study 가면 study-cont-tit 나오기 --- class
   var sceneStudyCont1 = new ScrollMagic.Scene({
     triggerElement: '.study',
@@ -503,7 +578,7 @@ $(document).ready(function () {
   //   name: 'study-list 사라짐',
   // });
 
-  // ******** CONTACT ********
+  // ■■■■■■■■■■■■■■■■ CONTACT ■■■■■■■■■■■■■■■■
   // ■■ contact ---- 스크롤시 end컨
   $(window).scroll(function () {
     // ■■ contact ---- active
