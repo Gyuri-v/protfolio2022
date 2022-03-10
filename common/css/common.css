@@ -8,7 +8,7 @@
 html, body, button, input, select, textarea{font-family:'Montserrat', 'Noto Sans KR', Tahoma, Geneva, sans-serif;}
 html{overflow-x:hidden;}
 html, body{width:100%;height:100%;font-weight:400;font-size:14px;line-height:1.4;color:#333;-webkit-text-size-adjust:none;word-break:keep-all;word-wrap:break-word;letter-spacing:-1px;}
-main{display:block;}
+main{display:block;width: 100%;overflow: hidden;}
 
 /* input */
 input:focus{outline:none}
@@ -570,4 +570,11 @@ select::-ms-expand{
 .foot-sns ul{ display: flex; }
 .foot-sns ul li a{ display: block; margin-left: 20px; font-size: 16px; font-weight: 500; color: #000; } 
 .foot-sns ul li a:hover{ color: #f69000; }
+
+
+@media screen and (max-width: 1024px){
+	.cursor{ display: none; }
+	.header{ height: 60px; }
+	.header .logo{ width: 100px; }
+}
 

@@ -55,7 +55,7 @@
     }
 
     // 
-    const heightRatio = window.innerHeight / 1080;
+    const heightRatio = window.innerHeight / 1080 * 0.9;
     canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
   };
   
@@ -171,7 +171,7 @@ $(document).ready(function () {
   var tweenIntroT1 = TweenMax.fromTo(
     '.intro-title .t1',
     0.2,
-    { scale: 12, x: '-80vw', y: 0 },
+    { scale: 12, x: '-90vw', y: 0 },
     { scale: 1, x: 0, y: 0 }
   );
   var tweenIntroT2 = TweenMax.fromTo(
@@ -296,11 +296,19 @@ $(document).ready(function () {
   
   // ■■■■■■■■■■■■■■■■ ABOUT ■■■■■■■■■■■■■■■■
   // ■■ about ---- about-title 애니 y이동
+  var aboutTitlChangeY = '';
+  if( $(window).width() > 1024 ){
+    aboutTitlChangeY = 400;
+  }else if( $(window).width() > 768 ){
+    aboutTitlChangeY = 300;
+  }else{
+    aboutTitlChangeY = 200;
+  }
   var tweenAboutTitle1 = TweenMax.fromTo(
     '.about-title',
     0.2,
     { y: 0 },
-    { y: 450 }
+    { y: aboutTitlChangeY }
   );
   var sceneAboutTitle1 = new ScrollMagic.Scene({
     triggerElement: '.about',
@@ -310,9 +318,9 @@ $(document).ready(function () {
   })
     .setTween(tweenAboutTitle1)
     .addTo(controller);
-  // .addIndicators({
-  //   name: 'about-title 1',
-  // });
+    // .addIndicators({
+    //   name: 'about-title 1',
+    // });
 
   // ■■ about ---- about-title x이동
   var windowHalf = $(window).height() * 0.7;
@@ -415,13 +423,13 @@ $(document).ready(function () {
     '.project-cont .title:nth-child(2n)',
     0.2,
     { x: 0 },
-    { x: '-130vw' }
+    { x: '-170vw' }
   );
   var tweenProjectTit2 = TweenMax.fromTo(
     '.project-cont .title:nth-child(odd)',
     0.2,
     { x: 0 },
-    { x: '130vw' }
+    { x: '170vw' }
   );
   var sceneProjectTit1 = new ScrollMagic.Scene({
     triggerElement: '.project',
@@ -501,7 +509,7 @@ $(document).ready(function () {
   var sceneStudyCont2 = new ScrollMagic.Scene({
     triggerElement: '.study',
     triggerHook: 0,
-    offset: 0,
+    offset: -100,
     duration: '0%',
   })
     .setClassToggle('.study-cont-tit', 'active2')
@@ -528,10 +536,7 @@ $(document).ready(function () {
   // ■■ study ---- study-cont-tit 사라지기
   var tweenStudyHideOffset = $(window).height() * 1.2;
   $(window).scroll(function () {
-    if (
-      $(document).scrollTop() >
-      $('.study').offset().top + tweenStudyHideOffset
-    ) {
+    if ( $(document).scrollTop() > $('.study').offset().top + tweenStudyHideOffset ) {
       $('.study-cont-tit').addClass('hide');
     } else {
       $('.study-cont-tit').removeClass('hide');
@@ -539,7 +544,7 @@ $(document).ready(function () {
   });
 
   // ■■ study ---- study-track 좌우 이동
-  var tweenStudyTrackOffset = $(window).height() * 1.4;
+  var tweenStudyTrackOffset = $(window).height() * 1.5;
   var tweenStudyTrack = TweenMax.fromTo(
     '.study-cont-track',
     0.2,
