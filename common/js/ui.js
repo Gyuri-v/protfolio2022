@@ -294,31 +294,58 @@ $(document).ready(function () {
   
   // ■■■■■■■■■■■■■■■■ ABOUT ■■■■■■■■■■■■■■■■
   // ■■ about ---- about-title 애니 y이동
-  var aboutTitlChangeY = '';
-  if( $(window).width() > 1024 ){
-    aboutTitlChangeY = 400;
-  }else if( $(window).width() > 768 ){
-    aboutTitlChangeY = 300;
-  }else{
-    aboutTitlChangeY = 200;
-  }
-  var tweenAboutTitle1 = TweenMax.fromTo(
-    '.about-title',
-    0.2,
-    { y: 0 },
-    { y: aboutTitlChangeY }
-  );
-  var sceneAboutTitle1 = new ScrollMagic.Scene({
-    triggerElement: '.about',
-    triggerHook: 1,
-    offset: 0,
-    duration: '100%',
-  })
-    .setTween(tweenAboutTitle1)
-    .addTo(controller);
-    // .addIndicators({
-    //   name: 'about-title 1',
-    // });
+  $(window).resize(function() { 
+    if( $(window).width() > 1024 ){
+      var tweenAboutTitle1 = TweenMax.fromTo(
+        '.about-title',
+        0.2,
+        { y: 0 },
+        { y: 400 }
+      );
+      var sceneAboutTitle1 = new ScrollMagic.Scene({
+        triggerElement: '.about',
+        triggerHook: 1,
+        offset: 0,
+        duration: '100%',
+      })
+        .setTween(tweenAboutTitle1)
+        .addTo(controller);
+        // .addIndicators({
+        //   name: 'about-title 1',
+        // });
+    }else if( $(window).width() > 768 ){
+      var tweenAboutTitle1 = TweenMax.fromTo(
+        '.about-title',
+        0.2,
+        { y: 0 },
+        { y: 300 }
+      );
+      var sceneAboutTitle1 = new ScrollMagic.Scene({
+        triggerElement: '.about',
+        triggerHook: 1,
+        offset: 0,
+        duration: '100%',
+      })
+        .setTween(tweenAboutTitle1)
+        .addTo(controller);
+    }else{
+      var tweenAboutTitle1 = TweenMax.fromTo(
+        '.about-title',
+        0.2,
+        { y: 0 },
+        { y: 200 }
+      );
+      var sceneAboutTitle1 = new ScrollMagic.Scene({
+        triggerElement: '.about',
+        triggerHook: 1,
+        offset: 0,
+        duration: '100%',
+      })
+        .setTween(tweenAboutTitle1)
+        .addTo(controller);
+    }
+  });
+  $(window).trigger("resize");
 
   // ■■ about ---- about-title x이동
   var windowHalf = $(window).height() * 0.7;
@@ -543,11 +570,12 @@ $(document).ready(function () {
 
   // ■■ study ---- study-track 좌우 이동
   var tweenStudyTrackOffset = $(window).height() * 1.5;
+  var studyTrackWidth = (($('.study-cont-track').width() - $(window).width() + parseInt($('.study-cont-item').css('margin-right') )) * -1);
   var tweenStudyTrack = TweenMax.fromTo(
     '.study-cont-track',
     0.2,
     { x: 0 },
-    { x: '-150vw' }
+    { x: studyTrackWidth }
   );
   var sceneStudyTrack = new ScrollMagic.Scene({
     triggerElement: '.study',

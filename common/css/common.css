@@ -564,11 +564,12 @@ select::-ms-expand{
 .header .logo{ width: 120px; }
 
 /* footer */
-.footer{ position: relative; z-index: 999; height: 150px; padding: 30px; border-top: 1px solid #000; letter-spacing: 0; }
+.footer{ position: relative; z-index: 999; height: 150px; padding: 30px 0; border-top: 1px solid #000; letter-spacing: 0; }
 .footer .inner{ display: flex; justify-content: space-between; }
 .foot-copy{ font-size: 15px; font-weight: 300; color: #666; }
-.foot-sns ul{ display: flex; }
-.foot-sns ul li a{ display: block; margin-left: 20px; font-size: 16px; font-weight: 500; color: #000; } 
+.foot-sns ul li{ display: inline-block; }
+.foot-sns ul li + li{ margin-left: 20px; }
+.foot-sns ul li a{ display: block; font-size: 16px; font-weight: 500; color: #000; } 
 .foot-sns ul li a:hover{ color: #f69000; }
 
 
@@ -576,5 +577,9 @@ select::-ms-expand{
 	.cursor{ display: none; }
 	.header{ height: 60px; }
 	.header .logo{ width: 100px; }
+	.footer{ height: auto; min-height: 120px; text-align: center; }
+	.footer .inner{ display: block; }
+	.foot-sns{ margin-top: 15px; }
+	.foot-sns ul li + li{ margin-left: 15px; }
 }
 
