@@ -89,7 +89,8 @@
 .project-list{ display: flex; flex-wrap: wrap; justify-content: space-between; max-width: 1800px; margin: 0 auto; padding: 0 6%; transition: all 0.1s; }
 .project-item{ position: relative; width: 48%; max-width: 700px; margin-bottom: 8vw; }
 .project-item:nth-child(2n){ top: 10vw; }
-.project-item .img-box{ overflow: hidden; position: relative; z-index: 2; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); }
+.project-item .img-wrap{ position: relative; z-index: 2; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1); }
+.project-item .img-box{ overflow: hidden; position: relative; z-index: 2; }
 .project-item .img-box .img{ position: relative; width: 100%; padding-bottom: 57%; }
 .project-item .img-box img{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 110%; max-width: none; height: 110%; }
 .project-item .hover-box{ opacity: 0; position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; border-radius: 50%; transition: all 0.5s; }

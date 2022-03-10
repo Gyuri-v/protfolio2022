@@ -45,7 +45,6 @@
 
     // greeting opacity
     document.querySelector('.greeting-cont').style.opacity = calcValue();
-    console.log(calcValue(progress));
 
     // 영역 벗어나면 visibility
     if ( pageYOffset > greetingHeight + 50 ) {
@@ -73,7 +72,6 @@
   });
   setImages();
 })();
-
 
 $(document).ready(function () {
   /* ■■■■■■■■■■■■■■■■ mouse ani ■■■■■■■■■■■■■■■■ */
