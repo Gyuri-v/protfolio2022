@@ -497,6 +497,16 @@
   </footer>
   
   <script type="text/javascript" src="./common/js/ui.js"></script>
+  <script>
+    $(document).ready(function(){
+      $('.project-item').each(function(){
+          var colorThief = new ColorThief();
+          var img = $(this).find('img');
+          var color = colorThief.getColor($(img)[0]);
+          $(this).find('.hover-box').css('background-color','rgba('+color+', 0.2'+')');
+      });
+    });
+  </script>
 </body>
 
 </html>

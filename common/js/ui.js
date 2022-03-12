@@ -405,13 +405,6 @@ $(document).ready(function () {
   });
 
   // ■■■■■■■■■■■■■■■■ PROJECT ■■■■■■■■■■■■■■■■
-  $('.project-item').each(function(){
-      var colorThief = new ColorThief();
-      var img = $(this).find('img');
-      var color = colorThief.getColor($(img)[0]);
-      $(this).find('.hover-box').css('background-color','rgba('+color+', 0.2'+')');
-  });
-
   var projectTop = $('.project').offset().top - windowHalf;
   $(window).scroll(function () {
     $(document).scrollTop() > projectTop
