@@ -590,6 +590,7 @@ $(document).ready(function () {
   // });
 
   // ■■ study ---- study-list 사라짐
+  var studyListDuration = '';
   var tweenStudyList = TweenMax.fromTo(
     '.study-cont-list',
     0.2,

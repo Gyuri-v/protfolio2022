@@ -99,8 +99,8 @@
 .project-item:hover .hover-box{ top: -20px; left: -20px; width: calc(100% + 40px); height: calc(100% + 40px); opacity: 1; border-radius: 0; }
 .project-item .txt-box{ display: flex; justify-content: space-between; align-items: center; margin-top: 30px; }
 .project-item .txt-box .tit{ font-size: 32px; font-weight: 400; }
-.project-item .txt-box .sub-tit{ position: relative; padding-left: 50px; font-size: 16px; font-weight: 400; }
-.project-item .txt-box .sub-tit::before{ content: ''; position: absolute; top: 50%; left: 0; width: 40px; height: 1px; background: #000; } 
+.project-item .txt-box .sub-tit{ position: relative; padding-left: 35px; font-size: 16px; font-weight: 400; }
+.project-item .txt-box .sub-tit::before{ content: ''; position: absolute; top: 45%; left: 0; width: 30px; height: 1px; background: #000; } 
 
 
 /* study */
@@ -205,6 +205,7 @@
 	.project-item .txt-box .sub-tit{ font-size: 14px; }
 
 	.study-cont-tit .txt-box .title{ margin-left: 15vw; margin-bottom: 25px; font-size: 60px; }
+	.study-cont-tit .txt-box .title2{ top: 10px; left: 10px; }
 	.study-cont-tit .txt-box .text{ font-size: 15px; }
 	.study-cont-item .tit{ margin-bottom: 5px; font-size: 26px; }
 	.study-cont-item .txt{ font-size: 14px; }
@@ -216,6 +217,7 @@
 @media screen and (max-width: 768px){
 	.about .inner{ display: block; }
 	.about .img-wrap{ width: 280px; max-width: 70%; margin-left: auto; margin-top: 5vh; }
+	.about .img-wrap .line{ top: 10px; left: -10px; }
 	
 	.project-cont .title{ margin: 5px 0; font-size: 14vw; }
 	.project-cont .title:nth-child(7n){ left: 0; }
@@ -232,10 +234,13 @@
 	.about-count{ font-size: 6.5vw; }
 	.about-text br{ display: none; }
 
-	.project-item .txt-box{ flex-direction: column; align-items: flex-start; }
-	.project-item .txt-box .sub-tit{ align-self: flex-end; margin-top: 7px; padding-left: 30px; }
-	.project-item .txt-box .sub-tit::before{ width: 20px; }
+	.project-item .txt-box{ flex-direction: column; }
+	.project-item .txt-box .tit{ font-size: 20px; }
+	.project-item .txt-box .sub-tit{ margin-top: 7px; padding-left: 0px; font-size: 13px; }
+	.project-item .txt-box .sub-tit::before{ display: none; }
 
+	.study-cont-tit .txt-box .title2{ top: 5px; left: 5px; }
+	.study-cont-tit .txt-box .text{ font-size: 14px; }
 	.study-cont-tit .txt-box .text br.mn{ display: none; }
 	
 	.contact-tit .item{ width: 75vh; height: 75vh; }
