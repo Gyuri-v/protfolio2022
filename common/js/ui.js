@@ -513,8 +513,8 @@ $(document).ready(function () {
   // ■■ study ---- study 가면 study-cont-tit 나오기 --- class
   var sceneStudyCont1 = new ScrollMagic.Scene({
     triggerElement: '.study',
-    triggerHook: 1,
-    offset: 0,
+    triggerHook: 0,
+    offset: -10,
     duration: '0%',
   })
     .setClassToggle('.study-cont', 'active1')
@@ -524,20 +524,21 @@ $(document).ready(function () {
   // });
 
   // ■■ study ---- study-cont-tit 변화 --- class
+  var windowHeight = $(window).height();
   var sceneStudyCont2 = new ScrollMagic.Scene({
     triggerElement: '.study',
-    triggerHook: 0,
-    offset: -100,
+    triggerHook: 0.5,
+    offset: windowHeight,
     duration: '0%',
   })
-    .setClassToggle('.study-cont-tit', 'active2')
+    .setClassToggle('.study-cont', 'active2')
     .addTo(controller);
   // .addIndicators({
   //   name: 'study-cont-tit bg 변화',
   // });
 
   // ■■ study ---- study-cont-tit 줄어들기
-  var tweenStudyBgOffset = $(window).height() * 0.8;
+  var tweenStudyBgOffset = $(window).height() * 1.5;
   var tweenStudyBg = TweenMax.to('.study-cont-tit', 0.2, { height: 0 });
   var sceneStudyBg = new ScrollMagic.Scene({
     triggerElement: '.study',
@@ -552,7 +553,7 @@ $(document).ready(function () {
   // });
 
   // ■■ study ---- study-cont-tit 사라지기
-  var tweenStudyHideOffset = $(window).height() * 1.2;
+  var tweenStudyHideOffset = $(window).height() * 2;
   $(window).scroll(function () {
     if ( $(document).scrollTop() > $('.study').offset().top + tweenStudyHideOffset ) {
       $('.study-cont-tit').addClass('hide');
@@ -562,7 +563,8 @@ $(document).ready(function () {
   });
 
   // ■■ study ---- study-track 좌우 이동
-  var tweenStudyTrackOffset = $(window).height() * 1.5;
+  var tweenStudyTrackOffset = $(window).height() * 2;
+  var tweenStudyTrackDuration = $(window).height() * 3;
   var studyTrackWidth = (($('.study-cont-track').width() - $(window).width() + parseInt($('.study-cont-item').css('margin-right') )) * -1);
   var tweenStudyTrack = TweenMax.fromTo(
     '.study-cont-track',
@@ -574,7 +576,7 @@ $(document).ready(function () {
     triggerElement: '.study',
     triggerHook: 0.5,
     offset: tweenStudyTrackOffset,
-    duration: '2000',
+    duration: tweenStudyTrackDuration,
   })
     .setTween(tweenStudyTrack)
     .addTo(controller);
@@ -594,9 +596,9 @@ $(document).ready(function () {
     triggerElement: '.contact',
     triggerHook: 0.5,
     offset: 0,
-    duration: '100%',
+    duration: '300',
   })
-    .setClassToggle('.study-cont-list', 'active2')
+    .setClassToggle('.study-cont-list', 'active3')
     .setTween(tweenStudyList)
     .addTo(controller);
   // .addIndicators({
