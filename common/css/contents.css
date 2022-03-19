@@ -130,7 +130,7 @@
 .study-cont-list.active2 .study-cont-track{ opacity: 1; }
 .study-cont-item{ width: 30vw; margin-right: 5vw; }
 .study-cont-item .img-box{ display: flex; align-items: center; overflow: hidden; position: relative; height: 18.5vw; border-radius: 10px; box-shadow: 0 10px 30px rgb(0 0 0 / 10%); background: #fff; }
-.study-cont-item .img-box img{ max-width: 90%; max-height: 100%; margin: 0 auto; }
+.study-cont-item .img-box img{ width: 100%; max-width: 90%; max-height: 100%; object-fit: contain; margin: 0 auto; }
 .study-cont-item .img-box.img-change img:nth-child(1){ animation: imgChange 2s infinite; }
 .study-cont-item .img-box.img-change img:nth-child(2){ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); animation: imgChange 2s 1s infinite; }
 @keyframes imgChange{
