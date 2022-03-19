@@ -242,8 +242,11 @@
 	.study-cont-tit .txt-box .title2{ top: 5px; left: 5px; }
 	.study-cont-tit .txt-box .text{ font-size: 14px; }
 	.study-cont-tit .txt-box .text br.mn{ display: none; }
+
+	.contact-tit .item1{ top: 45%; }
+	.contact-tit .item2{ top: 40%; }
+	.contact-tit .item2 .text{ font-size: 14px; }
 	
-	.contact-tit .item{ width: 75vh; height: 75vh; }
 	
 }
 

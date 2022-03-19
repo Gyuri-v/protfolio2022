@@ -582,4 +582,7 @@ select::-ms-expand{
 	.foot-sns{ margin-top: 15px; }
 	.foot-sns ul li + li{ margin-left: 15px; }
 }
+@media screen and (max-width: 480px){
+	.footer{ min-height: auto; padding: 20px 0; }
+}
 
