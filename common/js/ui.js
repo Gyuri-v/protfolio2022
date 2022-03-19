@@ -74,7 +74,7 @@
 })();
 
 
-// 이미지
+/* ■■■■■■■■■■■■■■■■ study img - lazy load ■■■■■■■■■■■■■■■■ */
 document.addEventListener("DOMContentLoaded", function() {
   var lazyloadImages = document.querySelectorAll("img.lazy");    
   var lazyloadThrottleTimeout;
