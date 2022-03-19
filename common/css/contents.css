@@ -126,7 +126,7 @@
 .study-cont-list.active1{ transition-delay: 1s; }
 .study-cont-list.active2{ transition: all 0.05s 0s linear; }
 .study-cont-list-tit{ position: absolute; top: 8vh; left: -1vw; font-family: 'Lato'; font-size: 10vw; font-weight: 700; color: transparent; line-height: 1.3; letter-spacing: 2px; -webkit-text-stroke: 1px #f69000; }
-.study-cont-track{ display: flex; transition: all 0.3s; }
+.study-cont-track{ display: flex; transition: all 0s; }
 .study-cont-item{ width: 30vw; margin-right: 5vw; }
 .study-cont-item .img-box{ display: flex; align-items: center; overflow: hidden; position: relative; height: 18.5vw; border-radius: 10px; box-shadow: 0 10px 30px rgb(0 0 0 / 10%); background: #fff; }
 .study-cont-item .img-box img{ max-width: 90%; max-height: 100%; margin: 0 auto; }
@@ -232,20 +232,22 @@
 	.about{ padding: 160px 0 70px; }
 	.about-title{ top: -42vw; font-size: 14vw; }
 	.about-count{ font-size: 6.5vw; }
+	.about-text{ font-size: 13px; }
 	.about-text br{ display: none; }
 
 	.project-item .txt-box{ flex-direction: column; }
 	.project-item .txt-box .tit{ font-size: 20px; }
-	.project-item .txt-box .sub-tit{ margin-top: 7px; padding-left: 0px; font-size: 13px; }
+	.project-item .txt-box .sub-tit{ margin-top: 7px; padding-left: 0px; font-size: 12px; }
 	.project-item .txt-box .sub-tit::before{ display: none; }
 
 	.study-cont-tit .txt-box .title2{ top: 5px; left: 5px; }
-	.study-cont-tit .txt-box .text{ font-size: 14px; }
+	.study-cont-tit .txt-box .text{ font-size: 13px; }
 	.study-cont-tit .txt-box .text br.mn{ display: none; }
+	.study-cont-item .txt{ font-size: 13px; }
 
 	.contact-tit .item1{ top: 45%; }
 	.contact-tit .item2{ top: 40%; }
-	.contact-tit .item2 .text{ font-size: 14px; }
+	.contact-tit .item2 .text{ font-size: 13px; }
 	
 	
 }
