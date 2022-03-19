@@ -615,73 +615,6 @@ $(document).ready(function () {
       $('.contact-cont').removeClass('active');
     }
 
-    // ■■ contact ----
-    var tweenContactSize = TweenMax.fromTo(
-      '.contact-tit .item1 svg',
-      0.2,
-      { 'margin-top': 500, scale: 2, rotate: 20 },
-      { 'margin-top': 0, scale: 1, rotate: 20 }
-    );
-    var tweenContactPath = TweenMax.fromTo(
-      '.contact-tit .item1 svg text',
-      0.2,
-      { stroke: '#f69000', fill: 'transparent' },
-      { stroke: 'transparent', fill: '#f69000' }
-    );
-    var sceneContactSize = new ScrollMagic.Scene({
-      triggerElement: '.contact',
-      triggerHook: 0.5,
-      offset: 300,
-      duration: '50%',
-    })
-      .setTween(tweenContactSize)
-      .addTo(controller);
-    var sceneContactPath = new ScrollMagic.Scene({
-      triggerElement: '.contact',
-      triggerHook: 0.5,
-      offset: 400,
-      duration: '50%',
-    })
-      .setTween(tweenContactPath)
-      .addTo(controller);
-    // .addIndicators({
-    //   name: 'contact 텍스트 사이즈',
-    // });
-
-    // ■■ contact ---- 텍스트 회전
-    var tweenContactRotate1 = TweenMax.fromTo(
-      '.contact .item1',
-      0.2,
-      { rotation: 0 },
-      { rotation: -180 }
-    );
-    var tweenContactRotate2 = TweenMax.fromTo(
-      '.contact .item2',
-      0.2,
-      { rotation: 180 },
-      { rotation: 0 }
-    );
-    var sceneContactRotate1 = new ScrollMagic.Scene({
-      triggerElement: '.contact',
-      triggerHook: 0,
-      offset: 500,
-      duration: '100%',
-    })
-      .setTween(tweenContactRotate1)
-      .addTo(controller);
-    var sceneContactRotate2 = new ScrollMagic.Scene({
-      triggerElement: '.contact',
-      triggerHook: 0,
-      offset: 500,
-      duration: '100%',
-    })
-      .setClassToggle('.contact .item1', 'active')
-      .setTween(tweenContactRotate2)
-      .addTo(controller);
-    // .addIndicators({
-    //   name: 'contact 텍스트 회전',
-    // });
-
     // ■■ contact ---- item2 휘어짐
     if (
       $(document).scrollTop() >
@@ -697,9 +630,76 @@ $(document).ready(function () {
       $(document).scrollTop() >
       $('.footer').offset().top - $(window).height()
     ) {
-      $('.contact-tit .item2 .text').addClass('active');
+      $('.contact-tit .item2').addClass('active2');
     } else {
-      $('.contact-tit .item2 .text').removeClass('active');
+      $('.contact-tit .item2').removeClass('active2');
     }
   });
+
+  // ■■ contact ---- scrollmagic
+  var tweenContactSize = TweenMax.fromTo(
+    '.contact-tit .item1 svg',
+    0.2,
+    { 'margin-top': 500, scale: 2, rotate: 20 },
+    { 'margin-top': 0, scale: 1, rotate: 20 }
+  );
+  var tweenContactPath = TweenMax.fromTo(
+    '.contact-tit .item1 svg text',
+    0.2,
+    { stroke: '#f69000', fill: 'transparent' },
+    { stroke: 'transparent', fill: '#f69000' }
+  );
+  var sceneContactSize = new ScrollMagic.Scene({
+    triggerElement: '.contact',
+    triggerHook: 0.5,
+    offset: 300,
+    duration: '50%',
+  })
+    .setTween(tweenContactSize)
+    .addTo(controller);
+  var sceneContactPath = new ScrollMagic.Scene({
+    triggerElement: '.contact',
+    triggerHook: 0.5,
+    offset: 400,
+    duration: '50%',
+  })
+    .setTween(tweenContactPath)
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'contact 텍스트 사이즈',
+  // });
+
+  // ■■ contact ---- 텍스트 회전
+  var tweenContactRotate1 = TweenMax.fromTo(
+    '.contact .item1',
+    0.2,
+    { rotation: 0 },
+    { rotation: -180 }
+  );
+  var tweenContactRotate2 = TweenMax.fromTo(
+    '.contact .item2',
+    0.2,
+    { rotation: 180 },
+    { rotation: 0 }
+  );
+  var sceneContactRotate1 = new ScrollMagic.Scene({
+    triggerElement: '.contact',
+    triggerHook: 0,
+    offset: 500,
+    duration: '100%',
+  })
+    .setTween(tweenContactRotate1)
+    .addTo(controller);
+  var sceneContactRotate2 = new ScrollMagic.Scene({
+    triggerElement: '.contact',
+    triggerHook: 0,
+    offset: 500,
+    duration: '100%',
+  })
+    .setClassToggle('.contact .item1', 'active')
+    .setTween(tweenContactRotate2)
+    .addTo(controller);
+  // .addIndicators({
+  //   name: 'contact 텍스트 회전',
+  // });
 });

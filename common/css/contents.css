@@ -177,7 +177,7 @@
 .contact-tit .item2 .text span { transform: translateX(calc(var(--mouse-x) * 0.03px)) translateY(calc(var(--mouse-y) * 0.03px)); }
 }
 .contact-tit .item2.hide{ opacity: 0; }
-.contact-tit .item2 .text.active{ opacity: 1; }
+.contact-tit .item2.active2 .text{ opacity: 1; }
 .contact-tit.hide{ opacity: 0; visibility: hidden; z-index: -1; }
 
 @media screen and (max-width: 1200px){
@@ -249,6 +249,7 @@
 
 	.contact-tit .item1{ top: 45%; }
 	.contact-tit .item2{ top: 40%; }
+	.contact-tit .item2.active2{ top: 35%; transition: 1s; }
 	.contact-tit .item2 .text{ font-size: 13px; }
 	
 	
