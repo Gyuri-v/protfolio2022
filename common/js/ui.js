@@ -73,6 +73,41 @@
   setImages();
 })();
 
+
+// 이미지
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyloadImages = document.querySelectorAll("img.lazy");    
+  var lazyloadThrottleTimeout;
+  
+  function lazyload () {
+    if(lazyloadThrottleTimeout) {
+      clearTimeout(lazyloadThrottleTimeout);
+    }    
+    
+    lazyloadThrottleTimeout = setTimeout(function() {
+        var scrollTop = window.pageYOffset;
+        lazyloadImages.forEach(function(img) {
+            if(img.offsetTop < (window.innerHeight + scrollTop)) {
+              img.src = img.dataset.src;
+              img.classList.remove('lazy');
+            }
+        });
+        if(lazyloadImages.length == 0) { 
+          document.removeEventListener("scroll", lazyload);
+          window.removeEventListener("resize", lazyload);
+          window.removeEventListener("orientationChange", lazyload);
+        }
+    }, 20);
+  }
+  
+  document.addEventListener("scroll", lazyload);
+  window.addEventListener("resize", lazyload);
+  window.addEventListener("orientationChange", lazyload);
+});
+
+
+
+
 $(document).ready(function () {
   /* ■■■■■■■■■■■■■■■■ mouse ani ■■■■■■■■■■■■■■■■ */
   // mouse animation
@@ -563,7 +598,7 @@ $(document).ready(function () {
   });
 
   // ■■ study ---- study-track 좌우 이동
-  var tweenStudyTrackOffset = $(window).height() * 2;
+  var tweenStudyTrackOffset = $(window).height() * 2.5;
   var tweenStudyTrackDuration = $(window).height() * 3;
   var studyTrackWidth = (($('.study-cont-track').width() - $(window).width() + parseInt($('.study-cont-item').css('margin-right') )) * -1);
   var tweenStudyTrack = TweenMax.fromTo(

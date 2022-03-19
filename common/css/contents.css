@@ -104,7 +104,7 @@
 
 
 /* study */
-.study{ overflow: visible; height: 500vh; margin-top: -50vh; }
+.study{ overflow: visible; height: 550vh; margin-top: -50vh; }
 .study-cont{ visibility: hidden; opacity: 0; }
 .study-cont.active1{ visibility: visible; opacity: 1; }
 .study-cont-tit{ display: flex; align-items: center; z-index: 3; transition: all 1s, z-index 0s; }
