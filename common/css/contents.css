@@ -39,8 +39,37 @@
 	.mouseAni3 { transform: translateX(calc(var(--mouse-x) * 0.01px)) translateY(calc(var(--mouse-y) * 0.01px)); }
 }
 
+/* loading */
+.loading-cont{ z-index: 11; background: #fff; }
+.loading-cont .inner{ display: flex; flex-direction: column; justify-content: center; height: 100%; }
+.loading-title{ font-size: 5vw; font-weight: 700; line-height: 1.2; }
+.loading-title span{ display: inline-block; overflow: hidden; min-width: 0.2em; font-style: normal; }
+.loading-title span i{ display: inline-block; font-style: normal; animation: loadingTitle1 1s ease 1 both; }
+.loading-title span:nth-child(2n) i{ animation-duration: 1.1s; }
+.loading-title span:nth-child(3n) i{ animation-name: loadingTitle3; }
+.loading-title:nth-child(2) span:nth-child(2n) i{ animation-name: loadingTitle2; }
+.loading.hide .loading-title span i{ animation: loadingTitle4 1s ease 1 both; }
+.loading.hide .loading-title span:nth-child(2n) i{ animation-duration: 1.2s; }
+.loading.hide .loading-cont{ opacity: 0; visibility: hidden; transition: all 1s 0.5s; }
+@keyframes loadingTitle1 {
+	0% { transform: translate(0.5em, 0); opacity: 0; }
+	100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes loadingTitle2 {
+	0% { transform: translate(1.5em, 0); opacity: 0; }
+	100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes loadingTitle3 {
+	0% { transform: translate(0.8em, 0); opacity: 0; }
+	100% { transform: translate(0, 0); opacity: 1; }
+}
+@keyframes loadingTitle4 {
+	0% { transform: translate(0, 0); opacity: 1; }
+	100% { transform: translate(-1.2em, 0); opacity: 0; }
+}
+
 /* greeting */
-.greeting{ height: 300vh; }
+.greeting{ height: 250vh; }
 .greeting-cont canvas{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
 /* intro */
@@ -150,7 +179,7 @@
 
 
 /* contact */
-.contact{ height: 280vh; }
+.contact{ height: 280vh; margin-top: 50vh; }
 .contact-cont{ z-index: -1; visibility: hidden; }
 .contact-cont.active{ z-index: 1; visibility: visible; }
 .contact-tit{ position: absolute; top: 0; left: 0; width: 100%; height: 100%; transition: all 0.5s; }
@@ -216,6 +245,9 @@
 	.contact-tit .item2 .text{ font-size: 17px; }
 }
 @media screen and (max-width: 768px){
+	.loading-title{ font-size: 8vw; }
+	.loading-title strong{ display: block; }
+
 	.about .inner{ display: block; }
 	.about .img-wrap{ width: 280px; max-width: 70%; margin-left: auto; margin-top: 5vh; }
 	.about .img-wrap .line{ top: 10px; left: -10px; }
@@ -226,6 +258,8 @@
 	.project-item:nth-child(2n){ top: 0; }
 }
 @media screen and (max-width: 480px){
+	.loading-title{ font-size: 11vw; }
+
 	.greeting-cont canvas{ left: 55%; }
 
 	.intro-title{ font-size: 20vw; }
@@ -241,7 +275,8 @@
 	.project-item .txt-box .sub-tit{ margin-top: 7px; padding-left: 0px; font-size: 12px; }
 	.project-item .txt-box .sub-tit::before{ display: none; }
 
-	.study-cont-list-tit{ top: 15vh; left: 20px; }
+	.study-cont-list{ flex-direction: column; justify-content: center; align-items: flex-start; }
+	.study-cont-list-tit{ position: relative; top: 0; left: 0; margin-bottom: -0.3em; font-size: 20vw; }
 	.study-cont-tit .txt-box .title2{ top: 5px; left: 5px; }
 	.study-cont-tit .txt-box .text{ font-size: 13px; }
 	.study-cont-tit .txt-box .text br.mn{ display: none; }

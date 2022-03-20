@@ -1,17 +1,48 @@
 (() => {
+
+  /* ■■■■■■■■■■■■■■■■ loading ■■■■■■■■■■■■■■■■ */
+  const header = document.querySelector('.header');
+  const loadingSec = document.querySelector('.loading')
+  if( pageYOffset > 0 ){
+    loadingSec.classList.add('hide');
+    loadingSec.style.cssText = `visibility: hidden; opacity: 0`;
+  }else{
+    header.style.top = "-100px";
+
+    window.addEventListener('load', () => {
+      setTimeout(function(){
+        header.style.cssText = `top: 0; transition: 1s;`;
+        loadingSec.classList.add('hide');
+      }, 1500)
+    });
+  }
+
+  $('.loading-title strong').each(function () {
+    var typingIdx = 0;
+    var typingTxt = $(this).text();
+    //typingTxt = typingTxt.replace(/(\s*)/g, "");
+    typingTxt = typingTxt.split('');
+    $(this).text('');
+    for (var i = 0; i < typingTxt.length; i++) {
+      $(this).append('<span><i>' + typingTxt[typingIdx] + '</i></span>');
+      typingIdx++;
+    }
+  });
+
+
   /* ■■■■■■■■■■■■■■■■ GREETING ■■■■■■■■■■■■■■■■ */
   const canvas = document.querySelector('#canvas-greeting');
   const context = canvas.getContext('2d');
   const videoImages = [];
   const greetingHeight = document.querySelector('.greeting').offsetHeight;
-  let totalImagesCount = 158;
+  let totalImagesCount = 99;
   let progress;
   let currentFrame;
 
   function setImages() {
     for(let i = 0; i < totalImagesCount; i++ ){
       let imgElem = new Image();
-      imgElem.src = `./video/greeting/greeting-img-${1000 + i}.jpg`;
+      imgElem.src = `./video/greeting/greeting-img-${1060 + i}.jpg`;
       videoImages.push(imgElem);
     }
   };
@@ -196,6 +227,7 @@ $(document).ready(function () {
       typingIdx++;
     }
   });
+
 
   // ■■■■■■■■■■■■■■■■ INTRO ■■■■■■■■■■■■■■■■
   var controller = new ScrollMagic.Controller();
@@ -620,7 +652,8 @@ $(document).ready(function () {
   // });
 
   // ■■ study ---- study-list 사라짐
-  var studyListDuration = '';
+  var studyListOffset = $(window).height() * -0.5;
+  var studyListDuration = $(window).height();
   var tweenStudyList = TweenMax.fromTo(
     '.study-cont-list',
     0.2,
@@ -630,8 +663,8 @@ $(document).ready(function () {
   var sceneStudyList = new ScrollMagic.Scene({
     triggerElement: '.contact',
     triggerHook: 0.5,
-    offset: 0,
-    duration: '300',
+    offset: studyListOffset,
+    duration: studyListDuration,
   })
     .setClassToggle('.study-cont-list', 'active3')
     .setTween(tweenStudyList)
@@ -644,7 +677,7 @@ $(document).ready(function () {
   // ■■ contact ---- 스크롤시 end컨
   $(window).scroll(function () {
     // ■■ contact ---- active
-    if ($(document).scrollTop() > $('.contact').offset().top - 600) {
+    if ($(document).scrollTop() > $('.contact').offset().top - $(window).height() ) {
       $('.contact-cont').addClass('active');
     } else {
       $('.contact-cont').removeClass('active');
@@ -687,7 +720,7 @@ $(document).ready(function () {
   var sceneContactSize = new ScrollMagic.Scene({
     triggerElement: '.contact',
     triggerHook: 0.5,
-    offset: 300,
+    offset: 000,
     duration: '50%',
   })
     .setTween(tweenContactSize)
@@ -695,7 +728,7 @@ $(document).ready(function () {
   var sceneContactPath = new ScrollMagic.Scene({
     triggerElement: '.contact',
     triggerHook: 0.5,
-    offset: 400,
+    offset: 100,
     duration: '50%',
   })
     .setTween(tweenContactPath)
