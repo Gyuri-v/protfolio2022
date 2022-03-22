@@ -69,23 +69,30 @@
 }
 
 /* greeting */
-.greeting{ height: 250vh; }
-.greeting-cont canvas{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+/* .greeting{ height: 250vh; }
+.greeting-cont canvas{ position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); } */
 
 /* intro */
 .intro{ height: 240vh; } 
-.intro-bg{ z-index: 9; top: -50%; height: 150%; opacity: 0; background-image: url('../../images/contents/intro-bg.jpg'); transition: all 0s, opacity 1s; }
-.intro-bg.active{ opacity: 1; }
+.intro-bg{ z-index: 9; top: -50%; height: 150%; opacity: 1; background-image: url('../../images/contents/intro-bg.jpg'); transition: all 0s, opacity 1s; }
 .intro-cont{ z-index: 10; display: flex; justify-content: center; align-items: center; background: transparent; }
-.intro-cont.hide{ visibility: hidden; opacity: 0; z-index: -1; transition: all 0s 2s; } 
+.intro-cont.hide{ visibility: hidden; opacity: 0; z-index: -1; transition: all 0s 1s; } 
 .intro-cont.none{ visibility: hidden; opacity: 0; z-index: -1; transition: all 0s 0s; } 
 /* .intro-cont::after{ content: ''; position: absolute; top: 0; left: 0; z-index: -1; width: 100%; height: 100%; background: #fff; } */
 .intro-img{ opacity: 1; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: opacity 1s; }
 .intro-img.hide{ opacity: 0; }
 .intro-title{ display: flex; transform: scale(1); opacity: 1; font-size: 10vw; font-weight: 700; transition: all 0.7s; } 
 .intro-title span{ display: inline-block; -webkit-text-stroke: 1px transparent; color: #fff; }
-.intro-title.hide{ transform: scale(10); opacity: 0; transition: all 2s; }
-.intro-title.hide span{ -webkit-text-stroke: 1px #f69000; color: transparent; transition: all 0.5s; }
+.intro-title.active{ animation: introTitle 1s 0.5s both; }
+.intro-title.active span{ animation: introTitleSpan 1s 1s both; }
+@keyframes introTitle {
+	0%{ transform: scale(10); opacity: 0; }
+	100%{ transform: scale(1); opacity: 1; }
+}
+@keyframes introTitleSpan {
+	0%{ -webkit-text-stroke: 1px #f69000; color: transparent; }
+	100%{ -webkit-text-stroke: 1px #fff; color: #fff; }
+}
 
 /* about */
 .about{ padding: 300px 0 120px; }

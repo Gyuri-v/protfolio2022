@@ -3,18 +3,18 @@
   /* ■■■■■■■■■■■■■■■■ loading ■■■■■■■■■■■■■■■■ */
   const header = document.querySelector('.header');
   const loadingSec = document.querySelector('.loading')
+  const introTitle = document.querySelector('.intro-title')
   if( pageYOffset > 0 ){
     loadingSec.classList.add('hide');
     loadingSec.style.cssText = `visibility: hidden; opacity: 0`;
   }else{
     header.style.top = "-100px";
 
-    window.addEventListener('load', () => {
-      setTimeout(function(){
-        header.style.cssText = `top: 0; transition: 1s;`;
-        loadingSec.classList.add('hide');
-      }, 1500)
-    });
+    setTimeout(function(){
+      header.style.cssText = `top: 0; transition: 1s;`;
+      loadingSec.classList.add('hide');
+      introTitle.classList.add('active');
+    }, 1500)
   }
 
   $('.loading-title strong').each(function () {
@@ -31,77 +31,77 @@
 
 
   /* ■■■■■■■■■■■■■■■■ GREETING ■■■■■■■■■■■■■■■■ */
-  const canvas = document.querySelector('#canvas-greeting');
-  const context = canvas.getContext('2d');
-  const videoImages = [];
-  const greetingHeight = document.querySelector('.greeting').offsetHeight;
-  let totalImagesCount = 99;
-  let progress;
-  let currentFrame;
+  // const canvas = document.querySelector('#canvas-greeting');
+  // const context = canvas.getContext('2d');
+  // const videoImages = [];
+  // const greetingHeight = document.querySelector('.greeting').offsetHeight;
+  // let totalImagesCount = 99;
+  // let progress;
+  // let currentFrame;
 
-  function setImages() {
-    for(let i = 0; i < totalImagesCount; i++ ){
-      let imgElem = new Image();
-      imgElem.src = `./video/greeting/greeting-img-${1060 + i}.jpg`;
-      videoImages.push(imgElem);
-    }
-  };
+  // function setImages() {
+  //   for(let i = 0; i < totalImagesCount; i++ ){
+  //     let imgElem = new Image();
+  //     imgElem.src = `./video/greeting/greeting-img-${1060 + i}.jpg`;
+  //     videoImages.push(imgElem);
+  //   }
+  // };
 
-  function calcValue(){
-    let opaVal;
+  // function calcValue(){
+  //   let opaVal;
     
-    const partScrollStart = greetingHeight * 0.95;
-    const partScrollEnd = greetingHeight * 1;
-    const partScrollHeight = partScrollEnd - partScrollStart;
+  //   const partScrollStart = greetingHeight * 0.95;
+  //   const partScrollEnd = greetingHeight * 1;
+  //   const partScrollHeight = partScrollEnd - partScrollStart;
     
-    if( pageYOffset >= partScrollStart && pageYOffset <= partScrollEnd ){
-      opaVal = (((pageYOffset - partScrollStart) / partScrollHeight ) * -1) + 1;
-    }else if( pageYOffset < partScrollStart ){
-      opaVal = 1;
-    }else if( pageYOffset > partScrollEnd ){
-      opaVal = 0;
-    }
+  //   if( pageYOffset >= partScrollStart && pageYOffset <= partScrollEnd ){
+  //     opaVal = (((pageYOffset - partScrollStart) / partScrollHeight ) * -1) + 1;
+  //   }else if( pageYOffset < partScrollStart ){
+  //     opaVal = 1;
+  //   }else if( pageYOffset > partScrollEnd ){
+  //     opaVal = 0;
+  //   }
 
-    return opaVal;
-  };
+  //   return opaVal;
+  // };
 
-  function aniGreeting(){
-    // greeting imogi
-    progress = pageYOffset / greetingHeight;
-    if (progress < 0) progress = 0;
-    if (progress > 1) progress = 1;
+  // function aniGreeting(){
+  //   // greeting imogi
+  //   progress = pageYOffset / greetingHeight;
+  //   if (progress < 0) progress = 0;
+  //   if (progress > 1) progress = 1;
 
-    currentFrame = Math.round((totalImagesCount - 1) * progress);
-    context.drawImage(videoImages[currentFrame], 0, 0);
+  //   currentFrame = Math.round((totalImagesCount - 1) * progress);
+  //   context.drawImage(videoImages[currentFrame], 0, 0);
 
-    // greeting opacity
-    document.querySelector('.greeting-cont').style.opacity = calcValue();
+  //   // greeting opacity
+  //   document.querySelector('.greeting-cont').style.opacity = calcValue();
 
-    // 영역 벗어나면 visibility
-    if ( pageYOffset > greetingHeight + 50 ) {
-      document.querySelector('.greeting-cont').style.visibility = 'hidden';
-    }else{
-      document.querySelector('.greeting-cont').style.visibility = 'visible';
-    }
+  //   // 영역 벗어나면 visibility
+  //   if ( pageYOffset > greetingHeight + 50 ) {
+  //     document.querySelector('.greeting-cont').style.visibility = 'hidden';
+  //   }else{
+  //     document.querySelector('.greeting-cont').style.visibility = 'visible';
+  //   }
 
-    // 
-    const heightRatio = window.innerHeight / 1080 * 0.9;
-    canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
-  };
+  //   // 
+  //   const heightRatio = window.innerHeight / 1080 * 0.9;
+  //   canvas.style.transform = `translate3d(-50%, -50%, 0) scale(${heightRatio})`;
+  // };
   
-  function init() {
-    context.drawImage(videoImages[0], 0, 0);
+  // function init() {
+  //   context.drawImage(videoImages[0], 0, 0);
 
-    window.addEventListener('scroll', function () {
-      aniGreeting();
-    });
-  }
+  //   window.addEventListener('scroll', function () {
+  //     aniGreeting();
+  //   });
+  // }
 
-  window.addEventListener('load', () => {
-    init();
-    aniGreeting();
-  });
-  setImages();
+  // window.addEventListener('load', () => {
+  //   init();
+  //   aniGreeting();
+  // });
+  // setImages();
 })();
 
 
@@ -236,38 +236,38 @@ $(document).ready(function () {
   var tweenIntroT1 = TweenMax.fromTo(
     '.intro-title .t1',
     0.2,
-    { scale: 12, x: '-90vw', y: 0 },
-    { scale: 1, x: 0, y: 0 }
+    { scale: 1, x: 0, y: 0 },
+    { scale: 12, x: '-90vw', y: 0 }
   );
   var tweenIntroT2 = TweenMax.fromTo(
     '.intro-title .t2',
     0.2,
-    { scale: 10, x: 0, y: '-140vh' },
-    { scale: 1, x: 0, y: 0 }
+    { scale: 1, x: 0, y: 0 },
+    { scale: 10, x: 0, y: '-140vh' }
   );
   var tweenIntroT3 = TweenMax.fromTo(
     '.intro-title .t3',
     0.2,
-    { scale: 9, x: 100, y: '130vh' },
-    { scale: 1, x: 0, y: 0 }
+    { scale: 1, x: 0, y: 0 },
+    { scale: 9, x: 100, y: '130vh' }
   );
   var tweenIntroT4 = TweenMax.fromTo(
     '.intro-title .t4',
     0.2,
-    { scale: 11, x: -100, y: '-150vh' },
-    { scale: 1, x: 0, y: 0 }
+    { scale: 1, x: 0, y: 0 },
+    { scale: 11, x: '30vw', y: '-150vh' }
   );
   var tweenIntroT5 = TweenMax.fromTo(
     '.intro-title .t5',
     0.2,
-    { scale: 10, x: '30vw', y: '130vh' },
-    { scale: 1, x: 0, y: 0 }
+    { scale: 1, x: 0, y: 0 },
+    { scale: 10, x: '70vw', y: '130vh' }
   );
   var sceneIntroT1 = new ScrollMagic.Scene({
     triggerElement: '.intro',
     triggerHook: 0,
     offset: 0,
-    duration: '50%',
+    duration: '100%',
   })
     .setTween(tweenIntroT1)
     .addTo(controller);
@@ -278,7 +278,7 @@ $(document).ready(function () {
     triggerElement: '.intro',
     triggerHook: 0,
     offset: '100vh',
-    duration: '50%',
+    duration: '100%',
   })
     .setTween(tweenIntroT2)
     .addTo(controller);
@@ -286,7 +286,7 @@ $(document).ready(function () {
     triggerElement: '.intro',
     triggerHook: 0,
     offset: '200vh',
-    duration: '50%',
+    duration: '100%',
   })
     .setTween(tweenIntroT3)
     .addTo(controller);
@@ -294,7 +294,7 @@ $(document).ready(function () {
     triggerElement: '.intro',
     triggerHook: 0,
     offset: '300vh',
-    duration: '50%',
+    duration: '100%',
   })
     .setTween(tweenIntroT4)
     .addTo(controller);
@@ -302,24 +302,13 @@ $(document).ready(function () {
     triggerElement: '.intro',
     triggerHook: 0,
     offset: '400vh',
-    duration: '50%',
+    duration: '100%',
   })
     .setTween(tweenIntroT5)
     .addTo(controller);
   // .addIndicators({
   //   name: '인트로 텍스트 마지막',
   // });
-
-  // ■■ intro ---- intro-img hide, bg show
-  $(window).scroll(function () {
-    if ($(document).scrollTop() > $('.intro').offset().top) {
-      $('.intro-img').addClass('hide');
-      $('.intro-bg').addClass('active');
-    } else {
-      $('.intro-img').removeClass('hide');
-      $('.intro-bg').removeClass('active');
-    }
-  });
 
   // ■■ intro ---- intro-title 커지면서 사라지는 애니메이션
   var introEnd = $('.about').offset().top - $(window).height() * 1.2;
