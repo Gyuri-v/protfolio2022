@@ -1,3 +1,8 @@
+window.addEventListener('load', () => {
+  document.body.classList.remove('before-load');
+});
+
+
 (() => {
 
   /* ■■■■■■■■■■■■■■■■ loading ■■■■■■■■■■■■■■■■ */
@@ -237,7 +242,7 @@ $(document).ready(function () {
     '.intro-title .t1',
     0.2,
     { scale: 1, x: 0, y: 0 },
-    { scale: 12, x: '-90vw', y: 0 }
+    { scale: 12, x: '-120vw', y: 0 }
   );
   var tweenIntroT2 = TweenMax.fromTo(
     '.intro-title .t2',
